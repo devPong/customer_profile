@@ -37,6 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'compressor',  # new
+    'flowbiteapp',  # new
+    'sys_core',
+    'person',
+    'contact',
 ]
 
 MIDDLEWARE = [
@@ -67,6 +72,12 @@ TEMPLATES = [
     },
 ]
 
+COMPRESS_ROOT = BASE_DIR / 'static'
+
+COMPRESS_ENABLED = True
+
+STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',)
+
 WSGI_APPLICATION = 'core.wsgi.application'
 
 
@@ -74,10 +85,14 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+     'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'customer_profile',
+        'USER': 'postgres',
+        'PASSWORD': '3489',
+        'HOST': 'localhost', 
+        'PORT': '5432',
+    },
 }
 
 

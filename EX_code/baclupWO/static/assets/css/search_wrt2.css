@@ -1,0 +1,13 @@
+html,
+ body{height: 100%}
+ body{background: -webkit-linear-gradient(left, #1da5ff, #60c5ff);}
+ .card{padding: 0px 15px;border-radius: 20px}
+ .c1{background-color: #f1f4ff;border-radius: 20px}a{margin: 0px;font-size: 13px;border-radius: 7px;text-decoration: none;color: black}
+ a:hover{color: #6ccbe0;background-color: #f1f4ff}
+ .nav-link{padding: 1rem 1.4rem;margin: 0rem 0.7rem}
+ .ac{font-weight: bold;color: #deebf6;font-size: 12px}
+ input, button{width: 96%;background-color: #d7f5fc;border-radius: 8px;padding: 8px 17px;font-size:13px;border: 1px solid #eff1f5;color: #ced1dc}
+ input{text-decoration: none}.bt{background-color: #277f0e;border: 1px solid rgb(300, 200, 200)}
+ form{margin-top: 70px}form >*{margin: 10px 0px}
+ #forgot{margin: 0px -60px}#register{text-align: center}
+ img{background-color: rgb(215, 231, 250)}.wlcm{font-size: 30px}.sp1{font-size: 5px}.sp1 >span{background-color: #beddf0}

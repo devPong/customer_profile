@@ -1,0 +1,205 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>LAMINA - Warranty Online</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/favicon_io/android-chrome-192x192.png' %}" rel="icon">
+  <link href="{% static 'assets/img/favicon_iofavicon-32x32.png' %}" rel="apple-touch-icon">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'stylehome/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'stylehome/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'stylehome/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'stylehome/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'stylehome/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Main CSS File Web -->
+  <link href="{% static 'stylehome/css/main.css' %}" rel="stylesheet">
+
+  <!-- Main CSS File Form-->
+  {% comment %} <link href="{% static 'styleform/main.css' %}" rel="stylesheet"> 
+  <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">{% endcomment %}
+
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.2.0/dist/select2-bootstrap-5-theme.min.css" />
+    <script type="text/javascript" src="{% static 'assets/vendor/jquery/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/js/bootstrap-datepicker.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/js/bootstrap-datepicker-thai.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/js/locales/bootstrap-datepicker.th.js' %}"></script> 
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+</head>
+
+<body class="starter-page-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+
+      <a href="{% url 'wrtonline:homeWarranty' %}" class="logo d-flex align-items-center me-auto">
+        <img src="{% static 'assets/img/Lamina-DIGITAL-White.jpg' %}" alt="">
+        {% comment %} <h1 class="sitename">LAMINA</h1> {% endcomment %}
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        {% comment %} <ul>
+          <li><a href="{% url 'wrtonline:homeWarranty' %}" class="active">Home</a></li>
+        </ul> {% endcomment %}
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+       <!-- Contact Section -->
+    <section id="contact" class="contact section" style="margin-top: 5%">
+
+          <div class="container text-center">
+              <div class="d-flex flex-column justify-content-center align-items-center">
+                <h1 style="color:#032686;">ข้อมูลบัตรลงทะเบียนรับประกันคุณภาพออนไลน์</h1> <br>
+              </div>
+          </div>
+
+
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+          {% for item in w_data%}
+          <div class="row gy-12 mt-1">
+            <div class="col-md-6">
+              <div class="php-email-form" style="max-width: 100%;">
+                <div class="row">
+                  <div class="col-md-5">
+                    <img src="{% static 'assets/img/tempcard.png' %}" class="img-fluid rounded-start" alt="lamina_wrt_temp">
+                  </div>
+                  <div class="col-md-7">
+                    <div class="card-body">
+                      <h5 class="card-title">ข้อมูลบัตรรับประกันคุณภาพออนไลน์</h5> <br>
+                      <p class="card-text"> <strong>หมายเลขบัตรรับประกัน: </strong> {{ item.number_wrt }} </p>
+                      <p class="card-text"> <strong>ชื่อ-นามสกุล: </strong> {{ item.cust_name }} </p>
+                      <p class="card-text"> <strong>วันที่ติดตั้ง: </strong> {{ item.cust_install_date }} </p>
+                      <p class="card-text"> <strong>ยี่ห้อรถ: </strong> {{ item.cust_carbrand }} </p>
+                      <p class="card-text"> <strong>รุ่นรถ: </strong> {{ item.cust_carmodel }} </p>
+
+                      {% comment %} <button type="submit" id="printWRT" class="next action-button btn btn-success">รายละเอียดเพิ่มเติม</button> {% endcomment %}
+
+                      <form action="{% url 'wrtonline:showdata_wrt_list' %}" method="POST">
+                        <input type="hidden" name="number_wrt" value="{{ item.number_wrt }}">
+                        <input type="hidden" id="brand_wrt" name="brand_wrt" value="{{ item.brand_wrt }}">
+                        <button type="submit" id="printWRT" class="next action-button btn btn-success">รายละเอียดเพิ่มเติม</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div> 
+            </div> 
+            {% endfor %}
+ 
+
+          
+          </div>
+        </div>
+      </section>
+
+  </main>
+
+  <footer id="footer" class="footer position-relative light-background">
+
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6 footer-about">
+          <a href="index.html" class="logo d-flex align-items-center">
+            <span class="sitename">บริษัท เทคโนเซล (เฟรย์) จำกัด</span>
+          </a>
+          <div class="footer-contact pt-3">
+            <p>12/11 หมู่ 18 ถนนตลิ่งชัน-บางบัวทอง แขวงศาลาธรรมสพน์ เขตทวีวัฒนา กรุงเทพฯ 10170</p>
+           {% comment %}  <p class="mt-3"><strong>Phone:</strong> <span>0 2422 2345</span></p>
+            <p><strong>Email:</strong> <span>info@example.com</span></p> {% endcomment %}
+          </div>
+          <div class="social-links d-flex mt-4">
+            <a href="https://www.facebook.com/LaminafilmsHQ/" target="_blank"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.youtube.com/user/laminafilms1/featured" target="_blank"><i class="bi bi-youtube"></i></a>
+            <a href="https://www.instagram.com/lamina_films/?igshid=18m04xpzxr32f" target="_blank"><i class="bi bi-instagram"></i></a>
+            <a href="https://lin.ee/ot1aDYm" target="_blank"><i class="bi bi-chat"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>เกี่ยวกับเรา</h4>
+          <ul>
+            <li><a href="https://www.laminafilms.com/th/aboutus" target="_blank">ประวัติ</a></li>
+            <li><a href="https://www.laminafilms.com/th/award" target="_blank">รางวัลความสำเร็จ</a></li>
+            <li><a href="https://www.laminafilms.com/th/csr" target="_blank">CSR โครงการเพื่อสังคม</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>ข่าวสารโปรโมชั่น</h4>
+          <ul>
+            <li><a href="https://www.laminafilms.com/th/promotion" target="_blank">โปรโมชั่น</a></li>
+            <li><a href="https://www.laminafilms.com/th/news" target="_blank">ข่าวสารประชาสัมพันธ์</a></li>
+            <li><a href="https://www.laminafilms.com/th/knowledgeandarticle" target="_blank">บทความน่ารู้</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>ประเมินราคาฟิล์ม</h4>
+          <ul>
+            <li><a href="https://www.laminafilms.com/th/estimate-car-price" target="_blank">ประเมินราคาฟิล์มรถยนต์</a></li>
+            <li><a href="https://www.laminafilms.com/th/estimate-building-film-price" target="_blank">ประเมินราคาฟิล์มบ้าน/อาคาร</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>การรับประกัน</h4>
+          <ul>
+            <li><a href="https://www.laminafilms.com/th/warranty" target="_blank">ลงทะเบียนรับประกันออนไลน์</a></li>
+            <li><a href="https://www.laminafilms.com/th/warranty/lamina-films-warranty" target="_blank">เงื่อนไขการรับประกัน</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>Copyright 2024</span> <strong class="px-1 sitename"><a href="https://www.laminafilms.com/th/index" target="_blank">Lamina Films</a></strong><span>All Rights Reserved</span></p>
+      <div class="credits">
+        Developed by IT Team Lamina Films
+        {% comment %} Developed by  <a href="mailto: dev.boonchoo@gmail.com" target="_blank">e-pong-dev</a> & Design by <a href="https://www.youtube.com/@diffindosubthai4602" target="_blank">清新</a></h6> {% endcomment %}
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'stylehome/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'stylehome/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'stylehome/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'stylehome/vendor/swiper/swiper-bundle.min.js' %}"></script>
+
+  <!-- Main JS File -->
+  <script src="{% static 'stylehome/js/main.js' %}"></script>
+
+
+
+
+</body>
+
+</html>

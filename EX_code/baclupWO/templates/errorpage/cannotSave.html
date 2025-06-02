@@ -1,0 +1,213 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>LAMINA - Warranty Online</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/favicon_io/android-chrome-192x192.png' %}" rel="icon">
+  <link href="{% static 'assets/img/favicon_iofavicon-32x32.png' %}" rel="apple-touch-icon">
+
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'stylehome/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'stylehome/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'stylehome/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'stylehome/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'stylehome/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="{% static 'stylehome/css/main.css' %}" rel="stylesheet">
+
+  
+
+  <!-- =======================================================
+  * Template Name: QuickStart
+  * Template URL: https://bootstrapmade.com/quickstart-bootstrap-startup-website-template/
+  * Updated: Aug 07 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+
+      <a href="{% url 'wrtonline:homeWarranty' %}" class="logo d-flex align-items-center me-auto">
+        <img src="{% static 'assets/img/Lamina-DIGITAL-White.jpg' %}" alt="">
+        {% comment %} <h1 class="sitename">LAMINA</h1> {% endcomment %}
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        {% comment %} <ul>
+          <li><a href="{% url 'wrtonline:homeWarranty' %}" class="active">Home</a></li>
+        </ul> {% endcomment %}
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+    </div>
+  </header>
+
+  {% comment %} <main class="main"> {% endcomment %}
+
+       <!-- Hero Section -->
+       <section id="hero" class="hero section">
+        <div class="hero-bg">
+          <img src="{% static 'stylehome/img/hero-bg-light.jpg' %}" alt="">
+        </div>
+        <div class="container text-center">
+            <div class="container text-center">
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                  <h1 style="color:#032686;">ขออภัยไม่สามารถบันทึกข้อมูลได้ </h1> <br>
+                  <h1 style="color:#032686;">กรุณาติดต่อเจ้าหน้าที่เพื่อตรวจสอบ</h1> <br>
+                </div>
+
+                <p>  บริษัท เทคโนเซล (เฟรย์) จำกัด <br>
+                    12/11 หมู่ 18 ถนนตลิ่งชัน-บางบัวทอง แขวงศาลาธรรมสพน์ เขตทวีวัฒนา กรุงเทพฯ 10170 <br>
+                    โทรศัพท์ : 0 2885 2500 &nbsp; Hotline : 0 2422 2345 <br>
+                    Line Officials :  <a href="https://page.line.me/xss1584c?openQrModal=true" target="_blank">https://lin.ee/ot1aDYm</a></p>
+
+            </div>
+        </div>
+
+        
+      </section><!-- /Hero Section -->
+
+      
+       <!-- Contact Section -->
+    {% comment %} <section id="contact" class="contact section" style="margin-top: 5%"> {% endcomment %}
+
+        <!-- Section Title -->
+        {% comment %} <div class="container section-title" data-aos="fade-up">
+          <h2>Contact</h2>
+          <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        </div><!-- End Section Title --> {% endcomment %}
+
+        {% comment %} <div class="container text-center">
+            <div class="container text-center">
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                  <h1 style="color:#032686;">ขออภัยไม่สามารถบันทึกข้อมูลได้ </h1> <br>
+                  <h1 style="color:#032686;">กรุณาติดต่อเจ้าหน้าที่เพื่อตรวจสอบ</h1> <br>
+                </div>
+            </div>
+        </div>
+        
+        <div class="center">
+            <div style="width: 100%; text-align:center;">
+        
+              <p>
+                  บริษัท เทคโนเซล (เฟรย์) จำกัด <br>
+                  12/11 หมู่ 18 ถนนตลิ่งชัน-บางบัวทอง แขวงศาลาธรรมสพน์ เขตทวีวัฒนา กรุงเทพฯ 10170 <br>
+                  โทรศัพท์ : 0 2885 2500 &nbsp; Hotline : 0 2422 2345 <br>
+                  Line Officials :  <a href="https://page.line.me/xss1584c?openQrModal=true" target="_blank">https://lin.ee/ot1aDYm</a></p>
+            
+              <br>
+                      
+            </div>  
+        </div>
+
+        
+      </section> 
+        
+            
+    
+
+  </main>{% endcomment %}
+
+
+  <footer id="footer" class="footer position-relative light-background">
+
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6 footer-about">
+          <a href="index.html" class="logo d-flex align-items-center">
+            <span class="sitename">บริษัท เทคโนเซล (เฟรย์) จำกัด</span>
+          </a>
+          <div class="footer-contact pt-3">
+            <p>12/11 หมู่ 18 ถนนตลิ่งชัน-บางบัวทอง แขวงศาลาธรรมสพน์ เขตทวีวัฒนา กรุงเทพฯ 10170</p>
+           {% comment %}  <p class="mt-3"><strong>Phone:</strong> <span>0 2422 2345</span></p>
+            <p><strong>Email:</strong> <span>info@example.com</span></p> {% endcomment %}
+          </div>
+          <div class="social-links d-flex mt-4">
+            <a href="https://www.facebook.com/LaminafilmsHQ/" target="_blank"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.youtube.com/user/laminafilms1/featured" target="_blank"><i class="bi bi-youtube"></i></a>
+            <a href="https://www.instagram.com/lamina_films/?igshid=18m04xpzxr32f" target="_blank"><i class="bi bi-instagram"></i></a>
+            <a href="https://lin.ee/ot1aDYm" target="_blank"><i class="bi bi-chat"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>เกี่ยวกับเรา</h4>
+          <ul>
+            <li><a href="https://www.laminafilms.com/th/aboutus" target="_blank">ประวัติ</a></li>
+            <li><a href="https://www.laminafilms.com/th/award" target="_blank">รางวัลความสำเร็จ</a></li>
+            <li><a href="https://www.laminafilms.com/th/csr" target="_blank">CSR โครงการเพื่อสังคม</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>ข่าวสารโปรโมชั่น</h4>
+          <ul>
+            <li><a href="https://www.laminafilms.com/th/promotion" target="_blank">โปรโมชั่น</a></li>
+            <li><a href="https://www.laminafilms.com/th/news" target="_blank">ข่าวสารประชาสัมพันธ์</a></li>
+            <li><a href="https://www.laminafilms.com/th/knowledgeandarticle" target="_blank">บทความน่ารู้</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>ประเมินราคาฟิล์ม</h4>
+          <ul>
+            <li><a href="https://www.laminafilms.com/th/estimate-car-price" target="_blank">ประเมินราคาฟิล์มรถยนต์</a></li>
+            <li><a href="https://www.laminafilms.com/th/estimate-building-film-price" target="_blank">ประเมินราคาฟิล์มบ้าน/อาคาร</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>การรับประกัน</h4>
+          <ul>
+            <li><a href="https://www.laminafilms.com/th/warranty" target="_blank">ลงทะเบียนรับประกันออนไลน์</a></li>
+            <li><a href="https://www.laminafilms.com/th/warranty/lamina-films-warranty" target="_blank">เงื่อนไขการรับประกัน</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>Copyright 2024</span> <strong class="px-1 sitename"><a href="https://www.laminafilms.com/th/index" target="_blank">Lamina Films</a></strong><span>All Rights Reserved</span></p>
+      <div class="credits">
+        Developed by IT Team Lamina Films
+        {% comment %} Developed by  <a href="mailto: dev.boonchoo@gmail.com" target="_blank">e-pong-dev</a> & Design by <a href="https://www.youtube.com/@diffindosubthai4602" target="_blank">清新</a></h6> {% endcomment %}
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'stylehome/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'stylehome/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'stylehome/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'stylehome/vendor/swiper/swiper-bundle.min.js' %}"></script>
+
+  <!-- Main JS File -->
+  <script src="{% static 'stylehome/js/main.js' %}"></script>
+
+
+
+</body>
+
+</html>

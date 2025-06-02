@@ -1,0 +1,843 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>LAMINA - Warranty Online</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/favicon_io/android-chrome-192x192.png' %}" rel="icon">
+  <link href="{% static 'assets/img/favicon_iofavicon-32x32.png' %}" rel="apple-touch-icon">
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'stylehome/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'stylehome/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'stylehome/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'stylehome/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'stylehome/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="{% static 'stylehome/css/main.css' %}" rel="stylesheet">
+
+  
+
+    <style>
+        #notificationMessage {
+            text-align: center; 
+        }
+    </style>
+
+</head>
+
+<body class="starter-page-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+
+      <a href="{% url 'wrtonline:homeWarranty' %}" class="logo d-flex align-items-center me-auto">
+        <img src="{% static 'assets/img/Lamina-DIGITAL-White.jpg' %}" alt="">
+        {% comment %} <h1 class="sitename">LAMINA</h1> {% endcomment %}
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        {% comment %} <ul>
+          <li><a href="{% url 'wrtonline:homeWarranty' %}" class="active">Home</a></li>
+        </ul> {% endcomment %}
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+
+       <!-- Contact Section -->
+    <section id="contact" class="contact section" style="margin-top: 5%">
+
+        <div class="container text-center">
+            <div class="d-flex flex-column justify-content-center align-items-center">
+              <h1 style="color:#032686;">ลงทะเบียนรับใบรับประกันคุณภาพ</h1> <br>
+            </div>
+        </div>
+        
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+  
+          <div class="row gy-12 mt-1">
+  
+            <div class="col-lg-12">
+              <form id="registrationForm" action="{% url 'wrtonline:form_warranty' %}" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="400">
+                {% csrf_token %}
+                <input type="text" hidden class="form-control" id="brand_wrt" name="brand_wrt" value="lamina">
+                  <div class="col-md-12">
+                    <lable> หมายเลขบัตรรับประกัน </lable>
+                    <input type="text" class="form-control" id="number_wrt" name="number_wrt" placeholder="หมายเลขบัตรรับประกัน"
+                         maxlength="15" data-mark="99-99-999-999-9" value="{{number_wrt}}">
+                  </div>
+  
+                  <div class="col-md-12 text-center" style="margin-top: 3%">   
+                    <button type="submit" id="comfrimRegis" name="comfrimRegis">ลงทะเบียน</button>
+                    
+                  </div>
+
+                  <div class="col-md-12" style="margin-top: 3%" align="right">   
+                    <a href="javascript:void(0);" class="read-more" id="HowToRegis" name="HowToRegis"><span>ขั้นตอนการลงทะเบียนรับใบรับประกันคุณภาพ</span><i class="bi bi-arrow-right"></i></a> 
+                    <br>
+                    <a href="http://147.50.4.136:8001/searchWarranty" class="read-more" ><span>หน้าตรวจสอบข้อมูล</span><i class="bi bi-arrow-right"></i></a> 
+                  </div>
+
+                 
+                  <div class="col-md-12" style="margin-top: 3%" align="center">   
+                    <a href="https://www.laminafilms.com/th/warranty/lamina-films-warranty" ><button type="button" id="how_to" name="how_to">วิธีการลงทะเบียนรับประกันคุณภาพฟิล์มกรองแสงลามิน่า</button></a>
+                  </div>
+              </form>
+              
+              
+            </div><!-- End Contact Form -->
+     
+            {% comment %}<div class="container" data-aos="fade-up" data-aos-delay="100" style="margin-top: 5%">
+      
+              <div class="row gy-4">
+      
+                <div class="col-lg-12 content" data-aos="fade-up" data-aos-delay="100">
+                  
+                   <h3>รูปแบบบัตรรับประกันคุณภาพออนไลน์</h3>
+      
+                  <p class="fst-italic">&nbsp;&nbsp;&nbsp;&nbsp; หลังการติดตั้งฟิล์มกรองแสงรถยนต์ลามิน่า ไม่ว่าจะติดจากศูนย์ติดตั้งฟิล์มมาตรฐาน 
+                    ที่ได้รับการแต่งตั้งอย่างเป็นทางการ หรือโชว์รูมจำหน่ายรถยนต์ ที่ติดฟิล์มลามิน่ามาให้กับลูกค้า ทางลูกค้าต้องได้รับ บัตรลงทะเบียนรับใบรับประกันคุณภาพ โดยมี 2 รูปแบบดังนี้
+                  </p>
+      
+                      <p style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp; 1. บัตรลงทะเบียนรับใบรับประกันคุณภาพ แบบ 2 ส่วน  </p>
+                      
+                      <ul>
+                        <li><span style="font-weight: bold;">ส่วนที่ 1 สำหรับร้านค้า: </span> <span>เอกสารส่วนนี้ ทางศูนย์ติดตั้งฟิล์มฯ จะเป็นผู้เก็บไว้</span></li>
+                        <li><span style="font-weight: bold;">ส่วนที่ 2 สำหรับลูกค้า: </span> <span>เอกสารส่วนนี้ ทางลูกค้าหรือเจ้าของรถ จะต้องนำไปลงทะเบียนการรับประกันคุณภาพ ผ่านระบบออนไลน์ <span style="color:red;">ภายใน 15 วัน หลังการติดตั้งฟิล์ม</span></span></li>
+                        
+                      </ul>
+                      
+                    <div class="row">
+                        <div class="col-6">
+                          <img src="{% static 'assets/img/manual_wrt/manual_wrt1.jpg' %}" class="img-fluid" alt="" >
+                        </div>
+                        <div class="col-6">
+                          <img src="{% static 'assets/img/manual_wrt/manual_wrt2.jpg' %}" class="img-fluid" alt="" >
+                        </div>
+                      </div> 
+      
+                      <br>
+                
+                      <p style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp; 2. บัตรลงทะเบียนรับใบรับประกันคุณภาพ แบบ 3 ส่วน  </p>
+                      
+                      <ul>
+                        <li><span style="font-weight: bold;">ส่วนที่ 1 สำหรับร้านค้า: </span> <span>เอกสารส่วนนี้ ทางศูนย์ติดตั้งฟิล์มฯ จะเป็นผู้เก็บไว้</span></li>
+                        <li><span style="font-weight: bold;">ส่วนที่ 2 สำหรับลูกค้า: </span> <span>เอกสารส่วนนี้ ทางลูกค้าหรือเจ้าของรถเก็บไว้ ระหว่างการขอรับใบรับประกันคุณภาพตัวจริงจากบริษัทฯ </span></li>
+                        <li><span style="font-weight: bold;">ส่วนที่ 3 ส่งคืนบริษัทฯ: </span> <span>เอกสารส่วนนี้ ลูกค้าหรือเจ้าของรถ ต้องกรอกรายละเอียดให้ชัดเจนถูกต้องและครบถ้วน จากนั้นส่งคืนบริษัทฯ <span style="color:red;">ภายใน 15 วัน หลังการติดตั้งฟิล์ม</span>
+                          หากมีรอยแก้ไขข้อมูล หรือกรอกข้อมูลไม่ครบ จะถือว่าบัตรลงทะเบียนรับใบรับประกันนั้นเป็นโมฆะ ไม่สามารถใช้เพื่อออกใบรับประกันคุณภาพได้ หรือสามารถลงทะเบียนรับประกันคุณภาพ ผ่านระบบออนไลน์ ได้เช่นกัน</span></li>
+                      </ul>
+
+                      <img src="{% static 'assets/img/manual_wrt/manual_wrt3.jpg' %}" class="img-fluid" alt="">
+                      <img src="{% static 'assets/img/manual_wrt/manual_wrt4.jpg' %}" class="img-fluid" alt="">
+      
+                     <br> <br>
+
+                  <p class="fst-italic" style="color:red; ont-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp; หมายเหตุ
+                    <ul class="fst-italic" style="color:red;">
+                      <li><span>1. หากลูกค้าหรือเจ้าของรถ ลงทะเบียนผ่านระบบออนไลน์ เสร็จสมบูรณ์จนได้รับบัตรรับประกันคุณภาพ (แบบออนไลน์) แล้ว 
+                        ไม่ต้องส่ง บัตรลงทะเบียนรับใบรับประกันคุณภาพ ส่วนที่ 3 กลับมายังบริษัทฯ</span></li>
+                      <li><span>2. หากยืนยันการลงทะเบียนแล้ว และต้องการแก้ไขข้อมูลโปรดติดต่อ 02-422-2345</span></li>
+                    </ul>
+                  </p>
+       
+                </div>
+      
+      
+              </div>
+      
+            </div>{% endcomment %}
+          </section>
+
+  </main>
+
+  <footer id="footer" class="footer position-relative light-background">
+
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6 footer-about">
+          <a href="https://www.laminafilms.com/th/index" target="_blank" class="logo d-flex align-items-center">
+            <span class="sitename">บริษัท เทคโนเซล (เฟรย์) จำกัด</span>
+          </a>
+          <div class="footer-contact pt-3">
+            <p>12/11 หมู่ 18 ถนนตลิ่งชัน-บางบัวทอง แขวงศาลาธรรมสพน์ เขตทวีวัฒนา กรุงเทพฯ 10170</p>
+          </div>
+          <div class="social-links d-flex mt-4">
+            <a href="https://www.facebook.com/LaminafilmsHQ/" target="_blank"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.youtube.com/user/laminafilms1/featured" target="_blank"><i class="bi bi-youtube"></i></a>
+            <a href="https://www.instagram.com/lamina_films/?igshid=18m04xpzxr32f" target="_blank"><i class="bi bi-instagram"></i></a>
+            <a href="https://lin.ee/ot1aDYm" target="_blank"><i class="bi bi-chat"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>เกี่ยวกับเรา</h4>
+          <ul>
+            <li><a href="https://www.laminafilms.com/th/aboutus" target="_blank">ประวัติ</a></li>
+            <li><a href="https://www.laminafilms.com/th/award" target="_blank">รางวัลความสำเร็จ</a></li>
+            <li><a href="https://www.laminafilms.com/th/csr" target="_blank">CSR โครงการเพื่อสังคม</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>ข่าวสารโปรโมชั่น</h4>
+          <ul>
+            <li><a href="https://www.laminafilms.com/th/promotion" target="_blank">โปรโมชั่น</a></li>
+            <li><a href="https://www.laminafilms.com/th/news" target="_blank">ข่าวสารประชาสัมพันธ์</a></li>
+            <li><a href="https://www.laminafilms.com/th/knowledgeandarticle" target="_blank">บทความน่ารู้</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>ประเมินราคาฟิล์ม</h4>
+          <ul>
+            <li><a href="https://www.laminafilms.com/th/estimate-car-price" target="_blank">ประเมินราคาฟิล์มรถยนต์</a></li>
+            <li><a href="https://www.laminafilms.com/th/estimate-building-film-price" target="_blank">ประเมินราคาฟิล์มบ้าน/อาคาร</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>การรับประกัน</h4>
+          <ul>
+            <li><a href="https://www.laminafilms.com/th/warranty" target="_blank">ลงทะเบียนรับประกันออนไลน์</a></li>
+            <li><a href="https://www.laminafilms.com/th/warranty/lamina-films-warranty" target="_blank">เงื่อนไขการรับประกัน</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>Copyright 2024</span> <strong class="px-1 sitename"><a href="https://www.laminafilms.com/th/index" target="_blank">Lamina Films</a></strong><span>All Rights Reserved</span></p>
+      <div class="credits">
+        Developed by IT Team Lamina Films
+        {% comment %} Developed by  <a href="mailto: dev.boonchoo@gmail.com" target="_blank">e-pong-dev</a> & Design by <a href="https://www.youtube.com/@diffindosubthai4602" target="_blank">清新</a></h6> {% endcomment %}
+      </div>
+    </div>
+
+  </footer>
+
+  
+
+  {% comment %} ##### POP UP ##### {% endcomment %}
+  <div class="modal fade" id="popup_privacy" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalToggleLabel">นโยบายความเป็นส่วนตัว</h5>
+            </div>
+            <div class="modal-body">
+                <strong>บริษัท เทคโนเซล (เฟรย์) จำกัด</strong> มุ่งมั่นในการคุ้มครองความเป็นส่วนตัวของคุณ และรับรองว่าข้อมูลส่วนบุคคลของคุณได้รับความคุ้มครอง ในนโยบายความเป็นส่วนตัวฉบับนี้ <br><br>
+                <strong>"ข้อมูลส่วนบุคคล"</strong> หมายถึงข้อมูลที่ระบุตัวบุคคลได้ ไม่ว่าข้อมูลนั้นจะจริงหรือเท็จ ซึ่งเกี่ยวข้องกับบุคคลที่ระบุตัวตนได้จากข้อมูลดังกล่าว
+
+                <table width="100%" style="margin-top:30px;">
+                    <tbody>
+                        <tr>
+                            <td width="30" valign="top"><div style="font-weight:900; font-size:20px;">1.</div></td>
+                            <td>
+                                <div style="font-weight:900; font-size:20px; margin-bottom: 15px;">คำนิยาม</div>
+                                <strong>“ข้อมูลส่วนบุคคล”</strong> หมายถึง ข้อมูลเกี่ยวกับบุคคลซึ่งทำให้สามารถระบุตัวบุคคลนั้นได้ ไม่ว่าทางตรงหรือทางอ้อม แต่ไม่รวมถึงข้อมูลผู้ถึงแก่กรรมโดยเฉพาะ
+                                <br><br>
+                                <strong>“ข้อมูลส่วนบุคคลอ่อนไหว”</strong> หมายถึง ข้อมูลที่เป็นเรื่องส่วนบุคคลโดยแท้ของบุคคล แต่มีความละเอียดอ่อนและอาจสุ่มเสี่ยงในการเลือกปฏิบัติอย่างไม่เป็นธรรม เช่น เชื้อชาติ เผ่าพันธุ์ ความคิดเห็นทางการเมือง ความเชื่อในลัทธิ ศาสนาหรือปรัชญา พฤติกรรมทางเพศ ประวัติอาชญากรรม ข้อมูลสุขภาพ ความพิการ ข้อมูลสหภาพแรงงาน ข้อมูลพันธุกรรม ข้อมูลชีวภาพ หรือข้อมูลอื่นใด ซึ่งกระทบต่อเจ้าของข้อมูลส่วนบุคคลในทำนองเดียวกัน ตามที่คณะกรรมการคุ้มครองข้อมูลส่วนบุคคลประกาศกำหนด
+                                <br><br>
+                                <strong>“คณะกรรมการคุ้มครองข้อมูลส่วนบุคคล”</strong> หมายถึง คณะกรรมการที่ได้รับการแต่งตั้งขึ้น โดยมีหน้าที่และอำนาจกำกับดูแล ออกหลักเกณฑ์ มาตรการ หรือข้อปฏิบัติอื่นใดที่เกี่ยวข้องกับการคุ้มครองข้อมูลส่วนบุคคลตามพระราช บัญญัติคุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="2" height="50"></td></tr>
+    
+                        <!-- 2 -->
+                        <tr>
+                            <td width="30" valign="top"><div style="font-weight:900; font-size:20px;">2.</div></td>
+                            <td>
+                                <div style="font-weight:900; font-size:20px; margin-bottom: 15px;">การบังคับใช้</div>
+                                นโยบายความเป็นส่วนตัวฉบับนี้อธิบายถึงประเภทของข้อมูลส่วนบุคคลที่เราเก็บรวบรวม และวิธีที่เราใช้ เปิดเผย ถ่ายโอน ประมวลผล และคุ้มครองข้อมูลดังกล่าว เราเก็บรวบรวมข้อมูลส่วนบุคคลผ่าน (โดยไม่จำกัดเฉพาะ) วิธีการต่อไปนี้<br>
+                                <table width="100%" class="top15 left15">
+                                <tbody>
+                                <tr>
+                                    <td valign="top" width="25">(ก)</td>
+                                    <td>เมื่อคุณซื้อสินค้า หรือเลือกชมสินค้าที่ ชื่อโดเมน ("เว็บไซต์")</td>
+                                </tr>
+                                <tr>
+                                    <td valign="top" width="25">(ข)</td>
+                                    <td>เมื่อคุณซื้อสินค้าที่ร้านค้าของเรา</td>
+                                </tr>
+                                <tr>
+                                    <td valign="top" width="25">(ค)</td>
+                                    <td>เมื่อคุณเชื่อมต่อกับเราผ่านสื่อสังคม (social media) หรือเข้าร่วมกิจกรรมทางการตลาดของเรา</td>
+                                </tr>
+                                <tr>
+                                    <td valign="top" width="25">(ง)</td>
+                                    <td>เมื่อคุณตกลงและยินยอมที่จะเป็นสมาชิกเว็บไซต์ไม่ว่าจะด้วยวิธีการทางกายภาพหรือทางอิเล็กโทรนิกส์</td>
+                                </tr>
+                                <tr>
+                                    <td valign="top" width="25">(จ)</td>
+                                    <td>เมื่อคุณเข้ามาติดต่อ หรือเข้ารับบริการในส่วนของบริษัท จะมีการบันทึกภาพของคุณในระบบ CCTV <br>รวมทั้งกรณีที่คุณโดยสารรถยนต์ส่วนบุคคลของบริษัท อาจมีการบันทึกภาพด้วยกล้องบันทึกหน้ารถยนต์</td>
+                                </tr>
+                                <tr>
+                                    <td valign="top" width="25">(ฉ)</td>
+                                    <td>เมื่อคุณทำการโทรเข้ามาเพื่อสอบถามรายละเอียดของทางบริษัทผ่านระบบ call center และ hot line ทางบริษัทจะมีการบันทึกเสียงสนทนาของคุณ</td>
+                                </tr>
+
+                    </tbody>
+                </table>
+
+                <br>
+            เราอาจปรับปรุงนโยบายความเป็นส่วนตัวนี้เป็นบางครั้ง โดยเราจะเผยแพร่นโยบายฉบับปรับปรุงบนเว็บไซต์ และ/หรือส่งให้กับคุณทางอีเมล ถ้าจุดประสงค์ตามนโยบายความเป็นส่วนตัวนี้มีการเปลี่ยนแปลง เราจะดำเนินการตามขั้นตอนที่จำเป็นเพื่อแจ้งให้คุณทราบ และขอคำยินยอมจากคุณสำหรับจุดประสงค์ใหม่ ก่อนที่จะทำการเก็บรวบรวม ใช้ หรือเปิดเผยข้อมูลส่วนบุคคลของคุณ ดังนั้น คุณควรกลับมาตรวจสอบหน้านี้เป็นประจำเพื่อดูข้อมูลฉบับปรับปรุงเกี่ยวกับวิธีที่เราจัดการกับข้อมูลส่วนบุคคลของคุณ
+        </td>
+    </tr>
+    <tr><td colspan="2" height="50"></td></tr>
+
+    <!-- 3 -->
+    <tr>
+        <td width="30" valign="top"><div style="font-weight:900; font-size:20px;">3.</div></td>
+        <td>
+            <div style="font-weight:900; font-size:20px; margin-bottom: 15px;">ความยินยอม</div>
+            เราจะไม่เก็บรวบรวม ใช้ หรือเปิดเผยข้อมูลส่วนบุคคลของคุณโดยที่ไม่ได้รับความยินยอมจากคุณ (ยกเว้นกรณีที่กฎหมายอนุญาตและให้อำนาจเราในการดำเนินการดังกล่าว) เมื่อคุณให้ข้อมูลส่วนบุคคลแก่เราแล้ว หมายความว่า คุณยินยอมให้บริษัทเก็บรวบรวม ใช้ เปิดเผย ถ่ายโอน และประมวลผลข้อมูลส่วนบุคคลของคุณตามนโยบายความเป็นส่วนตัวฉบับนี้
+            <br><br>
+            <strong>ประเภทของข้อมูลส่วนบุคคลที่เราเก็บรวบรวมนั้นรวมถึงแต่ไม่จำกัดเฉพาะ</strong>
+            <table width="100%" class="top15 left15">
+                <tbody>
+                  <tr>
+                    <td valign="top" width="25">(ก)</td>
+                    <td>ชื่อและนามสกุล</td>
+                </tr>
+                <tr>
+                    <td valign="top" width="25">(ข)</td>
+                    <td>ที่อยู่ เบอร์โทรศัพท์</td>
+                </tr>
+                <tr>
+                    <td valign="top" width="25">(ค)</td>
+                    <td>ที่อยู่อีเมล และหากมีความเหมาะสม เราจะเก็บรวบรวม</td>
+                </tr>
+                <tr>
+                    <td valign="top" width="25">(ง)</td>
+                    <td>ชื่อผู้ใช้และรหัสผ่าน</td>
+                </tr>
+                <tr>
+                    <td valign="top" width="25">(จ)</td>
+                    <td>ที่อยู่สำหรับออกใบเสร็จรับเงินและจัดส่งสินค้า</td>
+                </tr>
+                <tr>
+                    <td valign="top" width="25">(ฉ)</td>
+                    <td>เลขบัตรประจำตัวประชาชน</td>
+                </tr>
+                <tr>
+                    <td valign="top" width="25">(ช)</td>
+                    <td>ข้อมูลอื่นๆ เท่าที่จำเป็นเพื่อให้เราสามารถให้บริการแก่คุณ</td>
+                </tr>
+            </tbody></table>
+        </td>
+    </tr>
+    <tr><td colspan="2" height="50"></td></tr>
+
+
+    <!-- 4 -->
+    <tr>
+        <td width="30" valign="top"><div style="font-weight:900; font-size:20px;">4.</div></td>
+        <td>
+            <div style="font-weight:900; font-size:20px; margin-bottom: 15px;">จุดประสงค์</div>
+            เราเก็บรวบรวม ใช้ เปิดเผย ถ่ายโอน และประมวลผลข้อมูลส่วนบุคคลของคุณ เพื่อจุดประสงค์ในการให้บริการ ซึ่งรวมถึง แต่ไม่จำกัดเฉพาะ บริการต่อไปนี้
+            <br>
+            <ol class="top15">
+                <li>ส่งข้อมูลเกี่ยวกับผลิตภัณฑ์และแคมเปญจากเรา และพันธมิตรธุรกิจจากภายนอกของเราผ่านทางอีเมล เอสเอ็มเอส และไปรษณีย์ <br>(เมื่อเราได้รับคำยินยอมโดยชัดแจ้งจากคุณแล้ว)</li>
+                <li>ให้คุณซื้อผลิตภัณฑ์และบริการของเราบนเว็บไซต์</li>
+                <li>อำนวยความสะดวกให้กับธุรกรรมที่คุณทำกับเรา</li>
+                <li>ส่งตัวอย่างผลิตภัณฑ์และ/หรือผลิตภัณฑ์ของเราให้กับคุณ</li>
+                <li>แจ้งข่าวเกี่ยวกับความคืบหน้า การเปลี่ยนแปลง และการพัฒนาที่เกี่ยวข้องกับเราและบริการของเรา</li>
+                <li>แจ้งให้คุณทราบเกี่ยวกับการเปลี่ยนแปลงที่สำคัญในนโยบายความเป็นส่วนตัวฉบับนี้ รวมถึงนโยบายหรือบริการอื่นๆ ของเรา</li>
+                <li>ให้คำปรึกษาสำหรับคุณโดยเฉพาะ</li>
+                <li>ตอบกลับคำถามหรือความคิดเห็นจากคุณ</li>
+                <li>บำรุงรักษาและจัดการเว็บไซต์</li>
+                <li>จัดการด้านการดำเนินการทางธุรการและธุรกิจ</li>
+                <li>ร่วมมือกับพันธมิตรทางธุรกิจและผู้ประมวลผลจากภายนอกเพื่อให้บริการบางส่วน</li>
+                <li>เก็บข้อมูลของลูกค้า วิเคราะห์ตลาด และวิจัยตลาดเพื่อพัฒนาผลิตภัณฑ์และบริการของเรา</li>
+                <li>ป้องกัน ตรวจจับ และตรวจสอบอาชญากรรม รวมทั้งวิเคราะห์และจัดการความเสี่ยงทางการค้า</li>
+                <li>จุดประสงค์อื่นๆ ที่เกี่ยวข้องกับที่กล่าวข้างต้น (เรียกรวมกันว่า "บริการ")</li>
+            </ol>
+        </td>
+    </tr>
+    <tr><td colspan="2" height="50"></td></tr>
+
+
+    <!-- 5 -->
+    <tr>
+        <td width="30" valign="top"><div style="font-weight:900; font-size:20px;">5.</div></td>
+        <td>
+            <div style="font-weight:900; font-size:20px; margin-bottom: 15px;">การถอนความยินยอม การเข้าถึง และการแก้ไข</div>
+            หากคุณประสงค์ถอนความยินยอมที่จะรับข้อมูลเกี่ยวกับผลิตภัณฑ์และแคมเปญใหม่ๆ หรือบริการอื่นใด คุณสามารถทำได้โดยวิธีต่อไปนี้
+            <ol class="top15 bottom15">
+                <li>ยกเลิกการเป็นสมาชิกจากเว็บไซต์ของเรา</li>
+                <li>ติดต่อเจ้าหน้าที่ของเรา - ติดต่อเจ้าหน้าที่คุ้มครองข้อมูลของเรา ทางที่อยู่ด้านล่าง</li>
+            </ol>
+            โปรดทราบว่า หากคุณถอนความยินยอมให้เราใช้ เปิดเผย ถ่ายโอน และ/หรือประมวลผลข้อมูลส่วนบุคคลของคุณ เราอาจไม่สามารถให้บริการของเราแก่คุณได้ส่วนหนึ่งหรือทั้งหมด เราตรวจสอบให้แน่ใจว่าข้อมูลส่วนบุคคลทั้งหมดที่เรามีในครอบครองนั้นถูกต้องสมบูรณ์เท่าที่เราทราบ คุณมีสิทธิร้องขอการเข้าถึงและแก้ไขข้อมูลส่วนบุคคลของคุณ หากคุณต้องการความช่วยเหลือในการเข้าถึงและ/หรือแก้ไขข้อมูลส่วนบุคคลของคุณ โปรดติดต่อเจ้าหน้าที่คุ้มครองข้อมูลของเราทางที่อยู่ด้านล่าง เราจะติดต่อกลับถึงคุณภายใน 30 วัน
+        </td>
+    </tr>
+    <tr><td colspan="2" height="50"></td></tr>
+
+
+    <!-- 6 -->
+    <tr>
+        <td width="30" valign="top"><div style="font-weight:900; font-size:20px;">6.</div></td>
+        <td>
+            <div style="font-weight:900; font-size:20px; margin-bottom: 15px;">ผู้เยาว์</div>
+            เว็บไซต์นี้ออกแบบและทำขึ้นเพื่อบุคคลที่มีอายุตั้งแต่ 20 ปีขึ้นไป เราไม่มีเจตนาที่จะเก็บรวบรวมข้อมูลส่วนบุคคลจากผู้เยาว์ที่มีอายุน้อยกว่า 20 ปี ยกเว้นในบางเวปไซต์ที่ทำขึ้นสำหรับผู้เยาว์โดยเฉพาะ เราคุ้มครองข้อมูลส่วนบุคคลของผู้เยาว์พร้อมทั้งขอคำอนุญาตจากผู้ปกครอง ในวิธีการเดียวกับที่เราคุ้มครองข้อมูลส่วนบุคคลของผู้ใหญ่
+        </td>
+    </tr>
+    <tr><td colspan="2" height="50"></td></tr>
+
+
+    <!-- 7 -->
+    <tr>
+        <td width="30" valign="top"><div style="font-weight:900; font-size:20px;">7.</div></td>
+        <td>
+            <div style="font-weight:900; font-size:20px; margin-bottom: 15px;">การเปิดเผยและการถ่ายโอนข้อมูลให้กับบุคคลภายนอก</div>
+            เราจะไม่เปิดเผยหรือถ่ายโอนข้อมูลส่วนบุคคลของคุณแก่บุคคลภายนอก  หากไม่มีการร้องขอและได้รับความยินยอมจากคุณ (ยกเว้นในกรณีที่กฎหมายอนุญาตและให้อำนาจเราในการดำเนินการดังกล่าว) ข้อมูลส่วนบุคคลที่คุณมอบให้เราอาจได้รับการจัดเก็บ ประมวลผล ถ่ายโอนระหว่าง และเข้าถึงจากเซิร์ฟเวอร์ต่างๆ ที่ตั้งอยู่ในสหรัฐอเมริกาและประเทศอื่นๆซึ่งมีกฎและกฎหมายที่อาจไม่ได้ให้การรับประกันการคุ้มครองข้อมูลส่วนบุคคลในระดับเดียวกับประเทศไทย อย่างไรก็ตาม เราจะดำเนินการตามขั้นตอนที่จำเป็นเพื่อให้แน่ใจว่าข้อมูลส่วนบุคคลของคุณได้รับการจัดการตามนโยบายความเป็นส่วนตัวนี้ ไม่ว่าข้อมูลส่วนบุคคลของคุณจะถูกจัดเก็บหรือเข้าถึงจากที่ใดก็ตาม
+        </td>
+    </tr>
+    <tr><td colspan="2" height="50"></td></tr>
+
+
+    <!-- 8 -->
+    <tr>
+        <td width="30" valign="top"><div style="font-weight:900; font-size:20px;">8.</div></td>
+        <td>
+            <div style="font-weight:900; font-size:20px; margin-bottom: 15px;">การรักษาความปลอดภัยและการคุ้มครอง</div>
+            เราดำเนินการตามขั้นตอน มาตรฐาน และการจัดการด้านการรักษาความปลอดภัยอย่างเคร่งครัด เพื่อคุ้มครองข้อมูลส่วนบุคคลที่เราถือครองอยู่หรือที่เรามีอำนาจควบคุม เมื่อได้รับข้อมูลส่วนบุคคลของคุณแล้ว  ไม่ว่าจะทางกายภาพหรือทางอิเล็กทรอนิกส์ เราจะดำเนินการรักษาความปลอดภัยที่จำเป็นเพื่อคุ้มครองข้อมูลส่วนบุคคลดังกล่าว ตามเหตุผลและตามความเหมาะสมของพฤติการณ์ การดำเนินการดังกล่าวอาจประกอบด้วยมาตรการด้านการจัดการ มาตรการทางกายภาพ มาตรการเชิงเทคนิค หรือหลายมาตรการดังกล่าวรวมกัน<br><br>
+            เมื่อเราเปิดเผยหรือถ่ายโอนข้อมูลของคุณทางอินเทอร์เน็ต เราจะดูแลอย่างเหมาะสมที่สุดเพื่อป้องกันไม่ให้มีการเข้าถึงข้อมูลส่วนบุคคลของคุณโดยไม่ได้รับอนุญาต อย่างไรก็ตาม ไม่สามารถรับประกันได้ว่า การถ่ายโอนข้อมูลทางอินเทอร์เน็ตมีความปลอดภัยอย่างสมบูรณ์ คุณจึงต้องรับทราบว่าคุณส่งข้อมูลผ่านทางอินเทอร์เน็ตโดยที่คุณอาจต้องรับความเสี่ยงไว้เอง
+        </td>
+    </tr>
+    <tr><td colspan="2" height="50"></td></tr>
+
+
+    <!-- 9 -->
+    <tr>
+        <td width="30" valign="top"><div style="font-weight:900; font-size:20px;">9.</div></td>
+        <td>
+            <div style="font-weight:900; font-size:20px; margin-bottom: 15px;">การเก็บข้อมูลส่วนบุคคล</div>
+            เราจะไม่เก็บข้อมูลส่วนบุคคลของคุณเป็นเวลานานกว่าที่จำเป็น (ไม่เกิน 10 ปี) ต่อการดำเนินการตามจุดประสงค์ที่ระบุในนโยบายความเป็นส่วนตัวฉบับนี้ และจุดประสงค์ทางกฎหมายหรือทางธุรกิจที่ถูกต้องอื่นๆ หลังจากระยะเวลาดังกล่าวเราจะทำลายเอกสารที่มีข้อมูลส่วนบุคคลของคุณ หรือทำให้เอกสารดังกล่าวเป็นนิรนาม โดยใช้วิธีการที่ปลอดภัย
+        </td>
+    </tr>
+    <tr><td colspan="2" height="50"></td></tr>
+
+
+    <!-- 10 -->
+    <tr>
+        <td width="30" valign="top"><div style="font-weight:900; font-size:20px;">10.</div></td>
+        <td>
+            <div style="font-weight:900; font-size:20px; margin-bottom: 15px;">กฎหมายที่บังคับ</div>
+            นโยบายความเป็นส่วนตัวนี้อยู่ภายใต้บังคับของกฎหมายประเทศไทย
+            <div class="top30 bottom15"><u><strong>ติดต่อเรา</strong></u></div>
+            ถ้าคุณต้องการเข้าถึงหรือแก้ไขข้อมูลส่วนบุคคลที่ได้ให้แก่เราไว้ คุณสามารถส่งคำร้อง หรือคำถามใดๆ เกี่ยวกับข้อมูลส่วนบุคคลของคุณถึงบริษัทได้ <br>ตามที่อยู่นี้ด้านล่างนี้ หรือจะติดต่อเจ้าหน้าที่คุ้มครองข้อมูลของเรา
+            <div class="card border-dark" style="width: 100%;">
+                <div class="card-body">
+                    <div class="card-text">บริษัท เทคโนเซล (เฟรย์) จำกัด</div>
+                    <div class="card-text">12/11 หมู่ 18 ถนนตลิ่งชัน-บางบัวทอง แขวงศาลาธรรมสพน์ เขตทวีวัฒนา กรุงเทพฯ 10170</div>
+                    <div class="card-text">โทรศัพท์ : 0 2885 2500</div>
+                    <div class="card-text">Hotline : 0 2422 2345</div>
+                    <div class="card-text">อีเมล์ : dpooffice@laminafilms.com</div>
+                </div>
+            </div>      
+        </td>
+    </tr>
+    </tbody></table>
+
+    <br>
+    <div class="text-center">
+        <p style="font-size:16px;"><strong>ข้าพเจ้าได้อ่านและรับทราบประกาศความเป็นส่วนตัวของบริษัทแล้ว และข้าพเจ้ารับทราบว่า ข้าพเจ้ามีสิทธิถอนความยินยอมในการเก็บรวบรวม ใช้ และ/หรือเปิดเผยข้อมูลส่วนบุคคลของข้าพเจ้าเพื่อวัตถุประสงค์ตามที่ระบุไว้ในหนังสือฉบับนี้ได้ตลอดเวลา โดยแจ้งให้บริษัททราบเป็นลายลักษณ์อักษร</strong> </p>
+        <p><input type="checkbox" id="consentCheckbox"> <span id="consentText">ยินยอม</span></p>
+        </div>
+    </div>
+        <div class="modal-footer">
+            <button class="btn btn-success" id="comfrimBtn" name="comfrimBtn">ตกลง</button>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+       
+ <div class="custom-modal" id="howToRegisModal" style="display: none;">
+  <div class="custom-modal-content">
+
+      <div class="custom-modal-header">
+          <span class="custom-close" id="closeCustomModal">&times;</span>
+      </div>
+
+      <div class="custom-modal-body">
+          <h2>ขั้นตอนการลงทะเบียนรับใบรับประกันคุณภาพ</h2>
+          <table width="100%" style="margin-top:30px;">
+            <tbody>
+                <tr>
+                    <td width="30" valign="top"><div style="font-weight:900; font-size:20px;">1.</div></td>
+                    <td>
+                        <div style="font-weight:900; font-size:20px; margin-bottom: 15px;">สแกน QR Code บนบัตรลงทะเบียนรับใบรับประกันคุณภาพ เพื่อลงทะเบียนรับประกันคุณภาพฟิล์มกรองแสงลามิน่่า</div>
+                        <strong>แบบ 2 ส่วน</strong> <br>
+                        <img src="{% static 'assets/img/manual_wrt/manual_wrt5.png' %}" class="img-fluid" alt="">
+                        <br>
+                        <strong>แบบ 3 ส่วน</strong> <br>
+                        <img src="{% static 'assets/img/manual_wrt/manual_wrt6.png' %}" class="img-fluid" alt="">
+                        <br>
+                        
+                    </td>
+                </tr>
+
+                <!-- 2 -->
+                <tr>
+                  <td width="30" valign="top"><div style="font-weight:900; font-size:20px;">2.</div></td>
+                  <td>
+                      <div style="font-weight:900; font-size:20px; margin-bottom: 15px;">เพิ่มเพื่อน LINE Official Laminafilms</div>
+                      <img src="{% static 'assets/img/manual_wrt/manual_wrt7.png' %}" class="img-fluid" alt="">
+                      <br>
+                  </td>
+                </tr>
+
+                <!-- 3 -->
+                <tr>
+                  <td width="30" valign="top"><div style="font-weight:900; font-size:20px;">3.</div></td>
+                  <td>
+                      <div style="font-weight:900; font-size:20px; margin-bottom: 15px;">เลือกเมนูลงทะเบียนรับประกัน</div>
+                      <img src="{% static 'assets/img/manual_wrt/manual_wrt8.png' %}" class="img-fluid" alt="">
+                      <br>
+                  </td>
+                </tr>
+
+                <!-- 4 -->
+                <tr>
+                  <td width="30" valign="top"><div style="font-weight:900; font-size:20px;">4.</div></td>
+                  <td>
+                      <div style="font-weight:900; font-size:20px; margin-bottom: 15px;">เลือกเมนูลงทะเบียนรับประกัน (ในหน้าเว็ปไซต์)</div>
+                      {% comment %} <img src="{% static 'assets/img/manual_wrt/manual_wrt9.png' %}" class="img-fluid" alt=""> {% endcomment %}
+                      <br>
+                  </td>
+                </tr>
+
+              
+                <tr> <td colspan="2" height="50"></td></tr>
+                <!-- 5 -->
+                <tr>
+                  <td width="30" valign="top"><div style="font-weight:900; font-size:20px;">5.</div></td>
+                  <td>
+                      <div style="font-weight:900; font-size:20px; margin-bottom: 15px;">กรอกรหัส 11 หลัก ดูได้จากบัตรลงทะเบียนรับใบรับประกันคุณภาพ ส่วนที่ 2 (สำหรับลูกค้า)</div>
+                      <img src="{% static 'assets/img/manual_wrt/manual_wrt10.png' %}" class="img-fluid" alt="">
+                      <br>
+                  </td>
+                </tr>
+
+                <!-- 6 -->
+                <tr>
+                  <td width="30" valign="top"><div style="font-weight:900; font-size:20px;">6.</div></td>
+                  <td>
+                      <div style="font-weight:900; font-size:20px; margin-bottom: 15px;">กดยินยอม นโยบายการจัดเก็บข้อมูลส่วนบุคคล</div>
+                      <img src="{% static 'assets/img/manual_wrt/manual_wrt11.png' %}" class="img-fluid" alt="">
+                      <br>
+                  </td>
+                </tr>
+
+                <!-- 7 -->
+                <tr>
+                  <td width="30" valign="top"><div style="font-weight:900; font-size:20px;">7.</div></td>
+                  <td>
+                      <div style="font-weight:900; font-size:20px; margin-bottom: 15px;">ตรวจสอบข้อมูลการลงทะเบียน และกดยืนยันการลงทะเบียน</div>
+                      {% comment %} <img src="{% static 'assets/img/manual_wrt/manual_wrt12.png' %}" class="img-fluid" alt=""> {% endcomment %}
+                      <br>
+                  </td>
+                </tr>
+
+
+                <!-- 8 -->
+                <tr>
+                  <td width="30" valign="top"><div style="font-weight:900; font-size:20px;">8.</div></td>
+                  <td>
+                      <div style="font-weight:900; font-size:20px; margin-bottom: 15px;">ตรวจสอบข้อมูลการลงทะเบียน และกดยืนยันการลงทะเบียน</div>
+                      {% comment %} <img src="{% static 'assets/img/manual_wrt/manual_wrt13.png' %}" class="img-fluid" alt=""> {% endcomment %}
+                      <br>
+                  </td>
+                </tr>
+                
+                <!-- 9 -->
+                <tr>
+                  <td width="30" valign="top"><div style="font-weight:900; font-size:20px;">9.</div></td>
+                  <td>
+                      <div style="font-weight:900; font-size:20px; margin-bottom: 15px;">สามารถดาวน์โหลด ใบรับประกันคุณภาพ เพื่อเก็บเป็นหลักฐานในการรับประกัน</div>
+                      {% comment %} <img src="{% static 'assets/img/manual_wrt/manual_wrt14.png' %}" class="img-fluid" alt=""> {% endcomment %}
+                      <br>
+                  </td>
+                </tr>
+
+                <tr> <td colspan="2" height="50"></td></tr>
+
+                <tr>
+                  <td width="30" valign="top"><div style="font-weight:900; font-size:20px;"></div></td>
+                  <td>
+                      <div style="font-weight:900; font-size:20px; margin-bottom: 15px;">วิธีตรวจสอบ ใบรับประกันคุณภาพฟิล์มกรองแสงลามิน่า</div>
+                      สามารถตรวจสอบบัตรรับประกันคุณภาพได้ที่  <strong> <a href="http://147.50.4.136:8001/searchWarranty" target="_blank" class="read-more"><span>กดเพื่อไปยังหน้าตรวจสอบ</span></a></strong>
+                      โดยค้นหาผ่านหมายเลขบัตรรับประกัน หรือ ค้าหาผ่านชื่อ-นามสกุล , หมายเลขทะเบียนรถ/หมายเลขตัวถังรถ (VIN) และสามารถดาวน์โหลดใบรับประกัน ได้ตามรูปภาพ
+                     
+                  </td>
+              </tr>
+
+              </tbody>
+          </table>
+         
+        </div>
+    </div>
+  </div>
+
+
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+   
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'stylehome/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'stylehome/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'stylehome/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'stylehome/vendor/swiper/swiper-bundle.min.js' %}"></script>
+
+  <!-- Main JS File -->
+  <script src="{% static 'stylehome/js/main.js' %}"></script>
+
+  <script src="{% static 'stylehome/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const numberInput = document.getElementById("number_wrt");
+  
+      numberInput.addEventListener("input", function() {
+        const inputValue = numberInput.value;
+        const formattedValue = formatNumber(inputValue);
+        numberInput.value = formattedValue;
+      });
+  
+      function formatNumber(inputValue) {
+        const numericValue = inputValue.replace(/\D/g, "");
+  
+        let formattedValue = "";
+        for (let i = 0; i < numericValue.length; i++) {
+          if (i === 2 || i === 4 || i === 7 || i === 10) {
+            formattedValue += "-";
+          }
+          formattedValue += numericValue.charAt(i);
+        }
+  
+        return formattedValue;
+      }
+    });
+</script>
+
+
+<style>
+  /* CSS เพื่อเพิ่มการเด้งและเปลี่ยนสีแดง */
+  .highlight {
+      color: red;
+      animation: shake 0.5s ease;
+  }
+
+  /* การเด้ง */
+  @keyframes shake {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      50% { transform: translateX(5px); }
+      75% { transform: translateX(-5px); }
+      100% { transform: translateX(0); }
+  }
+
+  /* POP Up แสดงในรูปแบบ Mobile */
+  @media (max-width: 576px) {
+    #popup_privacy .modal-dialog {
+        max-width: 100%;
+        margin: 0;
+    }
+
+    #popup_privacy .modal-content {
+        padding: 10px;
+    }
+
+    #popup_privacy .modal-body strong, 
+    #popup_privacy .modal-body p {
+        font-size: 14px; 
+    }
+
+    #popup_privacy .modal-body table {
+        width: 100%;
+        table-layout: fixed;
+        word-wrap: break-word;
+    }
+
+
+
+</style>
+
+
+<script>
+  document.getElementById('comfrimRegis').addEventListener('click', function(event) {
+      event.preventDefault(); 
+      
+      let myModal = new bootstrap.Modal(document.getElementById('popup_privacy'), {
+          backdrop: 'static',
+          keyboard: false
+      });
+      
+      let modalDialog = document.querySelector('#popup_privacy .modal-dialog');
+      modalDialog.style.maxWidth = '80%';
+      modalDialog.style.margin = 'auto';
+  
+      myModal.show();
+  
+      document.querySelector('#comfrimBtn').addEventListener('click', function() {
+          let checkbox = document.getElementById('consentCheckbox');
+          let consentText = document.getElementById('consentText');
+          
+          if (!checkbox.checked) {
+              consentText.classList.add('highlight');
+              setTimeout(function() {
+                  consentText.classList.remove('highlight');
+              }, 700);
+              checkbox.focus();
+          } else {
+              myModal.hide();
+              document.getElementById('registrationForm').submit();
+          }
+      });
+  });
+</script>
+
+{% comment %} Scrip ปุ่ม ขั้นตอนการลงทะเบียน {% endcomment %}
+<script>
+  document.getElementById("HowToRegis").onclick = function() {
+      document.getElementById("howToRegisModal").style.display = "block";
+  }
+
+  document.getElementById("closeCustomModal").onclick = function() {
+      document.getElementById("howToRegisModal").style.display = "none";
+  }
+
+  window.onclick = function(event) {
+      if (event.target == document.getElementById("howToRegisModal")) {
+          document.getElementById("howToRegisModal").style.display = "none";
+      }
+  }
+</script>
+
+<style>
+  .custom-modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      padding-top: 100px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.4);
+  }
+
+  .custom-modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%; 
+    max-width: 80%;
+    position: relative;
+    max-height: 80vh; 
+    overflow-y: auto; 
+  }
+
+
+  /* ปุ่มปิดแยกส่วน */
+  .custom-modal-header {
+      display: flex;
+      justify-content: flex-end;
+      padding: 10px;
+      background-color: #f1f1f1;
+      border-bottom: 1px solid #ddd;
+  }
+
+  .custom-close {
+      color: #aaa;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+  }
+
+  .custom-close:hover,
+  .custom-close:focus {
+      color: black;
+      text-decoration: none;
+  }
+
+  .custom-modal-body {
+      padding: 20px;
+  }
+</style>
+
+{% comment %} <style>
+  .custom-modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      padding-top: 100px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.4);
+  }
+
+  .custom-modal-content {
+      background-color: #fefefe;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 100%;
+      max-width: 600px;
+  }
+
+  .custom-close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+  }
+
+  .custom-close:hover,
+  .custom-close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+  }
+</style> {% endcomment %}
+
+
+
+</body>
+
+</html>

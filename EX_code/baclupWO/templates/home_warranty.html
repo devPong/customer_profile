@@ -1,0 +1,371 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>LAMINA - Warranty Online</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/favicon_io/android-chrome-192x192.png' %}" rel="icon">
+  <link href="{% static 'assets/img/favicon_iofavicon-32x32.png' %}" rel="apple-touch-icon">
+
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'stylehome/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'stylehome/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'stylehome/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'stylehome/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'stylehome/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="{% static 'stylehome/css/main.css' %}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: QuickStart
+  * Template URL: https://bootstrapmade.com/quickstart-bootstrap-startup-website-template/
+  * Updated: Aug 07 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+
+      <a href="{% url 'wrtonline:homeWarranty' %}" class="logo d-flex align-items-center me-auto">
+        <img src="{% static 'assets/img/Lamina-DIGITAL-White.jpg' %}" alt="">
+        {% comment %} <h1 class="sitename">LAMINA</h1> {% endcomment %}
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="#hero" class="active">Home</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section">
+      <div class="hero-bg">
+        <img src="{% static 'stylehome/img/hero-bg-light.jpg' %}" alt="">
+      </div>
+      <div class="container text-center">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <h1 data-aos="fade-up"><span>LAMINA FILMS</span> Warranty Online</h1> <br>
+          {% comment %} <p data-aos="fade-up" data-aos-delay="100">Quickly start your project now and set the stage for success<br></p> {% endcomment %}
+         {% comment %} <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
+             <a href="https://www.youtube.com/watch?v=xWM5pcqYxZI" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>วิดีโอตัวอย่างสำหรับลงทะเบียนออนไลน์</span></a> 
+          </div>{% endcomment %}
+
+          {% comment %} <img src="{% static 'stylehome/img/hero-services-img.webp' %}" class="img-fluid hero-img" alt="" data-aos="zoom-out" data-aos-delay="300"> {% endcomment %}
+          {% comment %} <iframe width="100%" height="540"
+          src="https://www.youtube.com/embed/xWM5pcqYxZI?autoplay=1&mute=1"> </iframe> {% endcomment %}
+        </div>
+      </div>
+
+    </section><!-- /Hero Section -->
+
+   
+    <!-- About Section -->
+    <section id="about" class="about section">
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
+            <h3>ตรวจสอบบัตรรับประกันคุณภาพออนไลน์</h3>
+            
+            <p class="fst-italic">&nbsp;&nbsp;&nbsp;&nbsp; โลโก้ฟิล์ม…มีประโยชน์มากกว่าที่คิด โลโก้ฟิล์มลามิน่าบนกระจกที่ไม่บดบังทัศนวิสัย นอกจากจะเป็นสัญลักษณ์ช่วยยืนยันว่าลูกค้าได้รับการติดตั้งฟิล์มลามิน่าของแท้แล้ว 
+              หากมีเหตุต้องเคลมฟิล์มในระยะเวลาการรับประกัน โลโก้ฟิล์มลามิน่าก็จะช่วยทำให้เจ้าหน้าที่ทราบรุ่นฟิล์มลามิน่าที่ลูกค้าติดตั้งได้อย่างรวดเร็ว 
+              ฉะนั้น เราขอแนะนำให้ท่านเหลือโลโก้ฟิล์มลามิน่าไว้บนกระจก 1 รหัส ต่อ 1 จุด (บานกระจก) บริเวณที่ไม่บดบังทัศนวิสัยของท่าน
+            </p>
+            
+            <p style="font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp; การรับประกันคุณภาพฟิล์ม  </p>
+            
+            <p class="fst-italic">&nbsp;&nbsp;&nbsp;&nbsp; บริษัท เทคโนเซล (เฟรย์) จำกัด ผู้นำเข้าและจัดจำหน่ายฟิล์มกรองแสงสำหรับรถยนต์ “Lamina” แต่เพียงผู้เดียวในประเทศไทย 
+              ขอรับประกันคุณภาพของฟิล์มกรองแสงว่าจะรักษาคุณภาพ โดยเนื้อฟิล์มไม่หลุดล่อนจากกระจก, แห้งกรอบ, แตกร้าว หรือเกิดฟองอากาศภายในระยะเวลา 7 ปี 
+              ยกเว้นรุ่น L60MAX SPECIAL มีระยะเวลา 5 ปี หลังจากวันที่ติดตั้งฟิล์ม กรณีตรวจพบว่าสินค้าชำรุดเสียหายภายในระยะเวลารับประกัน “ผู้ขาย” 
+              ที่เป็นผู้ติดตั้งฟิล์มนั้นจะทำการเปลี่ยนแปลง หรือติดตั้งฟิล์มให้ใหม่โดยมีรายละเอียดดังนี้
+            </p>
+
+            <p class="fst-italic">&nbsp;&nbsp;&nbsp;&nbsp; ภายใน 3 ปีแรกนับแต่วันที่ติดตั้งฟิล์ม ไม่เสียค่าบริการแต่อย่างใด แต่ถ้าเจ้าของรถนำรถไปแก้ไขกับศูนย์ตัวแทนอื่นที่มิใช่ “ผู้ขาย” 
+              ที่เป็นผู้ติดตั้งที่ระบุในใบรับประกันคุณภาพ จะมีค่าบริการตามส่วนที่ติดตั้งฟิล์มให้ใหม่ตามความเหมาะสม หลังจากระยะเวลา 3 ปี เจ้าของรถต้องเป็นผู้รับผิดชอบในส่วนค่าบริการติดตั้งฟิล์มให้ใหม่ 
+              ทั้งนี้บริษัทฯ จะรับผิดชอบ ในกรณีที่เกิดความบกพร่องของคุณภาพฟิล์มเท่านั้น
+            </p>
+              {% comment %} <ul>
+              <li><i class="bi bi-check-circle"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
+              <li><i class="bi bi-check-circle"></i> <span>Duis aute irure dolor in reprehenderit in voluptate velit.</span></li>
+              <li><i class="bi bi-check-circle"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</span></li>
+            </ul> {% endcomment %}
+            <a href="{% url 'wrtonline:searchWarranty' %}" class="read-more"><span>ไปยังหน้าตรวจสอบ</span><i class="bi bi-arrow-right"></i></a>
+          </div>
+
+          {% comment %} <div class="col-lg-6 about-images" data-aos="fade-up" data-aos-delay="200">
+            <div class="row gy-4">
+              <div class="col-lg-6">
+                <img src="{% static 'stylehome/img/about-company-1.jpg' %}" class="img-fluid" alt="">
+              </div>
+              <div class="col-lg-6">
+                <div class="row gy-4">
+                  <div class="col-lg-12">
+                    <img src="{% static 'stylehome/img/about-company-2.jpg' %}" class="img-fluid" alt="">
+                  </div>
+                  <div class="col-lg-12">
+                    <img src="{% static 'stylehome/img/about-company-3.jpg' %}" class="img-fluid" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> {% endcomment %}
+
+          <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
+            <h3>ลงทะเบียนบัตรรับประกันคุณภาพออนไลน์</h3>
+            <p class="fst-italic" style="color:red;"> ข้อยกเว้นที่นอกเหนือจากการรับประกัน  </p>
+            <ul>
+              <li><i class="bi bi-x-circle-fill" style="color:red;"></i> <span>ความเสียหายอันเนื่องมาจากการขูด ขัด ลอก โดยบุคคลที่ไม่ใช่ช่างผู้ติดตั้ง</span></li>
+              <li><i class="bi bi-x-circle-fill" style="color:red;"></i> <span>การลอกออกหรือทำลายโดยเจตนา</span></li>
+              <li><i class="bi bi-x-circle-fill" style="color:red;"></i> <span>การใช้งาน และการดูแลรักษาที่ไม่ถูกต้อง เช่น การติดตั้งอุปกรณ์ใดๆ ที่มีขายึดเป็นยางสูญญากาศกับกระจกรถยนต์ ฯลฯ</span></li>
+              <li><i class="bi bi-x-circle-fill" style="color:red;"></i> <span>การรับประกันมีผลใช้เฉพาะผู้มีชื่อในใบรับประกันเท่านั้น</span></li>
+              <li><i class="bi bi-x-circle-fill" style="color:red;"></i> <span>กรณีกระจกแตกบริษัทฯ ไม่สามารถรับประกันให้ท่านได้</span></li>
+              <li><i class="bi bi-x-circle-fill" style="color:red;"></i> <span>กรณีความเสียหายส่วนบุคคล “ผู้ขาย” จะไม่รับผิดชอบในความสูญเสียหรือความเสียหายใดๆ ไม่ว่าจะโดยตรง โดยอ้อม หรือโดยบังเอิญที่เกิดจากการใช้หรือการไม่สามารถใช้ผลิตภัณฑ์นี้ ไม่ว่าในมูลละเมิด หรือผลของสัญญา</span></li>
+              <li><i class="bi bi-x-circle-fill" style="color:red;"></i> <span>ปัญหาที่เกิดจากการติดตั้งฟิล์ม “ผู้ขาย” ที่เป็นผู้ติดตั้งฟิล์มจะเป็นผู้รับผิดชอบ</span></li>
+              <li><i class="bi bi-x-circle-fill" style="color:red;"></i> <span>บริษัทฯ ไม่รับประกันคุณภาพฟิล์มกรณีติดทับกัน 2 ชั้นขึ้นไป</span></li>
+              <li><i class="bi bi-x-circle-fill" style="color:red;"></i> <span>ในกรณีติดตั้งฟิล์มกรองแสงบริเวณกระจกหลังคา Sun Roof , Moon Roof หรือ Panoramic Roof ที่มีการเคลือบสารกัน (สะท้อน) ความร้อน หรือสารใดๆบนผิวกระจกบริเวณดังกล่าวบริษัทฯ ขอยกเว้นการรับประกันคุณภาพสินค้าทุกกรณี รวมถึงการไม่รับประกันความเสียหายหรือหลุดลอกของสารเคลือบกัน (สะท้อน) ความร้อนอันอาจเกิดจากการติดตั้งหรือการลอกฟิล์ม</span></li>
+            </ul>
+            <a href="{% url 'wrtonline:registersWarranty' %}" class="read-more"><span>ไปยังหน้าลงทะเบียน</span><i class="bi bi-arrow-right"></i></a>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- /About Section -->
+
+    <!-- Clients Section -->
+    <section id="clients" class="clients section">
+
+      <div class="container" data-aos="fade-up">
+
+        <div class="row gy-4">
+
+          <div class="col-xl-2 col-md-3 col-6 ">
+            <a href="https://www.laminafilms.com/th/carfilms/Solar-Protection-Window-Films/Lamina-EV-Boost" target="_blank"><img src="{% static 'assets/img/evboost.jpeg' %}" class="img-fluid" alt=""></a>
+          </div><!-- End Client Item -->
+
+          <div class="col-xl-2 col-md-3 col-6 ">
+            <a href="https://www.laminafilms.com/th/carfilms/Solar-Protection-Window-Films/Lamina-EVS-Boost" target="_blank"><img src="{% static 'assets/img/evsboost.png' %}" class="img-fluid" alt=""></a>
+          </div><!-- End Client Item -->
+
+          <div class="col-xl-2 col-md-3 col-6 ">
+            <a href="https://www.laminafilms.com/th/carfilms/Solar-Protection-Window-Films/Lamina-Ceramatrix-Boost" target="_blank"><img src="{% static 'assets/img/ceramatrix.jpg' %}" class="img-fluid" alt=""></a>
+          </div><!-- End Client Item -->
+
+          <div class="col-xl-2 col-md-3 col-6 ">
+            <a href="https://www.laminafilms.com/th/carfilms/Solar-Protection-Window-Films/Lamina-CM-ONE-Boost" target="_blank"><img src="{% static 'assets/img/cmoneboost.png' %}" class="img-fluid" alt=""></a>
+          </div><!-- End Client Item -->
+
+          <div class="col-xl-2 col-md-3 col-6 ">
+            <a href="https://www.laminafilms.com/th/carfilms/Solar-Protection-Window-Films/Lamina-CM-ICON-Boost" target="_blank"><img src="{% static 'assets/img/cmicon.jpeg' %}" class="img-fluid" alt=""></a>
+          </div><!-- End Client Item -->
+
+          <div class="col-xl-2 col-md-3 col-6 ">
+            <a href="https://www.laminafilms.com/th/carfilms/Solar-Protection-Window-Films/Lamina-Ceramic-Onxy-Boost" target="_blank"><img src="{% static 'assets/img/onyxboost.png' %}" class="img-fluid" alt=""></a>
+          </div><!-- End Client Item -->
+
+          <div class="col-xl-2 col-md-3 col-6 ">
+            <a href="https://www.laminafilms.com/th/carfilms/Solar-Protection-Window-Films/Lamina-Digital-Ceramic-Iris-Boost" target="_blank"><img src="{% static 'assets/img/iris.jpg' %}" class="img-fluid" alt=""></a>
+          </div><!-- End Client Item -->
+
+          <div class="col-xl-2 col-md-3 col-6 ">
+            <a href="https://www.laminafilms.com/th/carfilms/Solar-Protection-Window-Films/Lamina-Mystery-Boost" target="_blank"><img src="{% static 'assets/img/mystery.jpeg' %}" class="img-fluid" alt=""></a>
+          </div><!-- End Client Item -->
+
+          <div class="col-xl-2 col-md-3 col-6 ">
+            <a href="https://www.laminafilms.com/th/carfilms/Solar-Protection-Window-Films/Lamina-Special-Series" target="_blank"><img src="{% static 'assets/img/special.jpeg' %}" class="img-fluid" alt=""></a>
+          </div><!-- End Client Item -->
+
+          <div class="col-xl-2 col-md-3 col-6 ">
+            <a href="https://www.laminafilms.com/th/carfilms/Solar-Protection-Window-Films/Lamina-Executive-Series" target="_blank"><img src="{% static 'assets/img/executive.jpeg' %}" class="img-fluid" alt=""></a>
+          </div><!-- End Client Item -->
+
+          <div class="col-xl-2 col-md-3 col-6 ">
+            <a href="https://www.laminafilms.com/th/carfilms/Solar-Protection-Window-Films/Lamina-Genius-Series" target="_blank"><img src="{% static 'assets/img/genius.jpg' %}" class="img-fluid" alt=""></a>
+          </div><!-- End Client Item -->
+
+          <div class="col-xl-2 col-md-3 col-6 ">
+            <a href="https://www.laminafilms.com/th/carfilms/Solar-Protection-Window-Films/Lamina-Pop-Series" target="_blank"><img src="{% static 'assets/img/pop.jpeg' %}" class="img-fluid" alt=""></a>
+          </div><!-- End Client Item -->
+
+          <div class="col-xl-2 col-md-3 col-6 ">
+            <a href="https://www.laminafilms.com/th/carfilms/Power-Sunroof/Lamina-Power-Sunroof" target="_blank"><img src="{% static 'assets/img/powersunroof.png' %}" class="img-fluid" alt=""></a>
+          </div><!-- End Client Item -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Clients Section -->
+
+   
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>ติดต่อเรา</h2>
+        {% comment %} <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p> {% endcomment %}
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-6">
+            <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="200">
+              <i class="bi bi-geo-alt"></i>
+              <h3>ที่อยู่</h3>
+              <p>12/11 หมู่ 18 ถนนตลิ่งชัน-บางบัวทอง แขวงศาลาธรรมสพน์ เขตทวีวัฒนา กรุงเทพฯ 10170</p>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="col-lg-3 col-md-6">
+            <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="300">
+              <i class="bi bi-telephone"></i>
+              <h3>ติดต่อเรา</h3>
+              <p>0 2422 2345</p>
+            </div>
+          </div><!-- End Info Item -->
+
+          <div class="col-lg-3 col-md-6">
+            <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="300">
+              <i class="bi bi-chat"></i>
+              <h3>Line Officials</h3>
+              <p> <a href="https://page.line.me/xss1584c?openQrModal=true" target="_blank">https://lin.ee/ot1aDYm</a></p>
+            </div>
+          </div><!-- End Info Item -->
+
+        </div>
+
+        <div class="row gy-4 mt-1">
+          
+          <div class="col-lg-6"> 
+            <img src="{% static 'assets/img/company_w720.jpeg' %}" class="img-fluid" alt="">
+          </div><!-- End Picture Compay -->
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3874.8676015572805!2d100.40641387509089!3d13.786853886608688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e291570f61baa7%3A0x5265a1d76775c33f!2zTGFtaW5hIEZpbG1zIC0g4Lia4LiI4LiBLiDguYDguJfguITguYLguJnguYDguIvguKUgKOC5gOC4n-C4o-C4ouC5jCkgKOC4quC4s-C4meC4seC4geC4h-C4suC4meC5g-C4q-C4jeC5iCk!5e0!3m2!1sth!2sth!4v1726220736518!5m2!1sth!2sth" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div><!-- End Google Maps -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Contact Section -->
+
+  </main>
+
+  <footer id="footer" class="footer position-relative light-background">
+
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6 footer-about">
+          <a href="index.html" class="logo d-flex align-items-center">
+            <span class="sitename">บริษัท เทคโนเซล (เฟรย์) จำกัด</span>
+          </a>
+          <div class="footer-contact pt-3">
+            <p>12/11 หมู่ 18 ถนนตลิ่งชัน-บางบัวทอง แขวงศาลาธรรมสพน์ เขตทวีวัฒนา กรุงเทพฯ 10170</p>
+           {% comment %}  <p class="mt-3"><strong>Phone:</strong> <span>0 2422 2345</span></p>
+            <p><strong>Email:</strong> <span>info@example.com</span></p> {% endcomment %}
+          </div>
+          <div class="social-links d-flex mt-4">
+            <a href="https://www.facebook.com/LaminafilmsHQ/" target="_blank"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.youtube.com/user/laminafilms1/featured" target="_blank"><i class="bi bi-youtube"></i></a>
+            <a href="https://www.instagram.com/lamina_films/?igshid=18m04xpzxr32f" target="_blank"><i class="bi bi-instagram"></i></a>
+            <a href="https://lin.ee/ot1aDYm" target="_blank"><i class="bi bi-chat"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>เกี่ยวกับเรา</h4>
+          <ul>
+            <li><a href="https://www.laminafilms.com/th/aboutus" target="_blank">ประวัติ</a></li>
+            <li><a href="https://www.laminafilms.com/th/award" target="_blank">รางวัลความสำเร็จ</a></li>
+            <li><a href="https://www.laminafilms.com/th/csr" target="_blank">CSR โครงการเพื่อสังคม</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>ข่าวสารโปรโมชั่น</h4>
+          <ul>
+            <li><a href="https://www.laminafilms.com/th/promotion" target="_blank">โปรโมชั่น</a></li>
+            <li><a href="https://www.laminafilms.com/th/news" target="_blank">ข่าวสารประชาสัมพันธ์</a></li>
+            <li><a href="https://www.laminafilms.com/th/knowledgeandarticle" target="_blank">บทความน่ารู้</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>ประเมินราคาฟิล์ม</h4>
+          <ul>
+            <li><a href="https://www.laminafilms.com/th/estimate-car-price" target="_blank">ประเมินราคาฟิล์มรถยนต์</a></li>
+            <li><a href="https://www.laminafilms.com/th/estimate-building-film-price" target="_blank">ประเมินราคาฟิล์มบ้าน/อาคาร</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>การรับประกัน</h4>
+          <ul>
+            <li><a href="https://www.laminafilms.com/th/warranty" target="_blank">ลงทะเบียนรับประกันออนไลน์</a></li>
+            <li><a href="https://www.laminafilms.com/th/warranty/lamina-films-warranty" target="_blank">เงื่อนไขการรับประกัน</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>Copyright 2024</span> <strong class="px-1 sitename"><a href="https://www.laminafilms.com/th/index" target="_blank">Lamina Films</a></strong><span>All Rights Reserved</span></p>
+      <div class="credits">
+        Developed by IT Team Lamina Films
+        {% comment %} Developed by  <a href="mailto: dev.boonchoo@gmail.com" target="_blank">e-pong-dev</a> & Design by <a href="https://www.youtube.com/@diffindosubthai4602" target="_blank">清新</a></h6> {% endcomment %}
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'stylehome/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'stylehome/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'stylehome/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'stylehome/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'stylehome/vendor/swiper/swiper-bundle.min.js' %}"></script>
+
+  <!-- Main JS File -->
+  <script src="{% static 'stylehome/js/main.js' %}"></script>
+
+</body>
+
+</html>

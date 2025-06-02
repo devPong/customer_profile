@@ -1,0 +1,1122 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>LAMINA - Warranty Online</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/favicon_io/android-chrome-192x192.png' %}" rel="icon">
+  <link href="{% static 'assets/img/favicon_iofavicon-32x32.png' %}" rel="apple-touch-icon">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'stylehome/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'stylehome/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'stylehome/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'stylehome/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'stylehome/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Main CSS File Web -->
+  <link href="{% static 'stylehome/css/main.css' %}" rel="stylesheet">
+
+  <!-- Main CSS File Form-->
+  {% comment %} <link href="{% static 'styleform/main.css' %}" rel="stylesheet"> 
+  <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">{% endcomment %}
+
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.2.0/dist/select2-bootstrap-5-theme.min.css" />
+    <script type="text/javascript" src="{% static 'assets/vendor/jquery/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/js/bootstrap-datepicker.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/js/bootstrap-datepicker-thai.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/js/locales/bootstrap-datepicker.th.js' %}"></script> 
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+</head>
+
+<body class="starter-page-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+
+      <a href="{% url 'wrtonline:homeWarranty' %}" class="logo d-flex align-items-center me-auto">
+        <img src="{% static 'assets/img/Lamina-DIGITAL-White.jpg' %}" alt="">
+        {% comment %} <h1 class="sitename">LAMINA</h1> {% endcomment %}
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="{% url 'wrtonline:homeWarranty' %}" class="active">Home</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+       <!-- Contact Section -->
+    <section id="contact" class="contact section" style="margin-top: 5%">
+
+          <div class="container text-center">
+              <div class="d-flex flex-column justify-content-center align-items-center">
+                <h1 style="color:#032686;">ลงทะเบียนบัตรรับประกันคุณภาพออนไลน์</h1> <br>
+              </div>
+          </div>
+
+
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+  
+          <div class="row gy-12 mt-1">
+  
+            <div class="col-lg-12">
+              <form id="frm" action="{% url 'wrtonline:previews_warranty' %}" method="POST" class="php-email-form" style="background-color:#f8fbfc;">
+
+                <div class="container" style="text-align:right;">
+                  <p><strong>หมายเลขบัตรรับประกัน : {{find_number}}</strong></p>
+                </div>
+                
+                <input type="hidden" id="id_wrt" name="id_wrt" value="{{ find_id }}">
+                <input type="hidden" id="product_code" name="product_code" value="{{ codepro }}">
+                <input type="hidden" id="number_wrt" name="number_wrt" value="{{ find_number }}">
+                <input type="hidden" id="brand_wrt" name="brand_wrt" value="{{ brand_wrt }}">
+                <p style="color:red; font-size: 13px;">** กรุณากรอกข้อมูลของท่านให้ครบถ้วน และตรวจสอบข้อมูลก่อนบันทึก **</span></p>
+                
+                <div class="title">ข้อมูลส่วนบุคคล <span style="color:red; font-weight: bold;">*</span></div>
+                <div class="row mb-2">
+                  <div class="col-sm-7">    
+                    <div class="form-group">
+                      <input type="text" name="cust_name" id="cust_name" class="form-control" placeholder="ชื่อ - นามสกุล" required/>
+                    </div>
+                  </div>
+              
+                  <div class="col-sm">
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="bi bi-calendar-date"></i></span>
+                      <input type="text" class="form-control" name="cust_birthday" id="cust_birthday" placeholder="วัน/เดือน/ปีเกิด" autocomplete="off" required/>
+                    </div>
+                  </div>
+              
+                  <div class="col-sm">
+                    {% comment %} <input type="hidden" id="cust_gender" name="cust_gender">
+                    <select name="cust_sex" class="form-select" id="cust_sex" onchange="updateSelectedCustSex()" required> {% endcomment %}
+                      <select name="cust_gender" class="form-select" id="cust_gender">
+                      <option value="" selected disabled hidden>- เพศ -</option>
+                      <option value="Male">ชาย</option>
+                      <option value="Female">หญิง</option>
+                      <option value="Unknow">ไม่ระบุ</option>
+                    </select>
+                  </div>
+                </div>
+              
+                <div class="row mb-2">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <input type="text" name="cust_phone" class="form-control" id="cust_phone" placeholder="เบอร์ติดต่อ" maxlength="10" required/>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <input type="email" name="cust_mail" class="form-control" id="cust_mail" placeholder="E-mail"/>
+                      <span style="color:red; font-size: 12px;">E-mail (ถ้ามี)</span>
+                    </div>
+                  </div>
+                  
+                </div>
+                
+                <br>
+              
+                <div class="title">ที่อยู่ <span style="color:red; font-weight: bold;">*</span></div>
+                <div class="row mb-2">
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <input type="text" name="cust_address" class="form-control" id="cust_address" placeholder="ที่อยู่" />
+                    </div>
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <input type="hidden" id="selected_province_name" name="selected_province_name">
+                      <input type="hidden" id="cust_province_id" name="cust_province_id">
+                      <select name="cust_province" id="cust_province" class="form-select">
+                        <option value="" selected disabled hidden>- จังหวัด -</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <input type="hidden" id="selected_district_name" name="selected_district_name">
+                      <input type="hidden" id="cust_district_id" name="cust_district_id">
+                      <select name="cust_district" id="cust_district" class="form-select">
+                        <option value="" selected disabled hidden>- อำเภอ -</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <input type="hidden" id="selected_subdistrict_name" name="selected_subdistrict_name">
+                      <input type="hidden" id="cust_subdistrict_id" name="cust_subdistrict_id">
+                      <select name="cust_subdistrict" id="cust_subdistrict" class="form-select">
+                        <option value selected disabled hidden>- ตำบล -</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-sm">
+                    <div class="form-group">
+                      <input type="hidden" type="text" name="cust_postalid"  id="cust_postalid">
+                      <input type="text" name="cust_postalcode" class="form-control" id="cust_postalcode" placeholder="รหัสไปรษณีย์" />
+                    </div>
+                  </div>
+                </div>
+                <br>
+              
+                <div class="title">ข้อมูลรถ <span style="color:red; font-weight: bold;">*</span></div>
+                <div class="row mb-2">
+                  <div class="col-sm">
+                    <input type="hidden" id="selected_carbrand_name" name="selected_carbrand_name">
+                    <input type="hidden" id="cust_carbrand_id" name="cust_carbrand_id">
+                    <select name="cust_carbrand" class="form-select" id="cust_carbrand" onchange="updateSelectedCarBrand()">
+                      <option value selected disabled hidden>- ยี่ห้อรถ -</option>
+                    </select>
+                  </div>
+                  <div class="col-sm">
+                    <input type="hidden" id="selected_carmodel_name" name="selected_carmodel_name">
+                    <input type="hidden" id="cust_carmodel_id" name="cust_carmodel_id">
+                    <select name="cust_carmodel" class="form-select" id="cust_carmodel" onchange="updateSelectedCarModel()">
+                      <option value selected disabled hidden>- รุ่นรถ -</option>
+                    </select>
+                  </div>
+                </div>
+                <span id="vinspan" style="color:red; font-weight: bold; font-size: 14px;"></span>
+                <div class="row mb-2">
+                  <div class="col-sm">
+                    <div class="form-group">
+                      <input type="text" name="cust_liceseplateblack" id="cust_liceseplateblack" class="form-control" placeholder="เลขทะเบียนรถป้ายดำ" value="" />
+                    </div>
+                  </div>
+                  <div class="col-sm">
+                    <div class="form-group">
+                      <input type="text" name="cust_vin" id="cust_vin" class="form-control" placeholder="หมายเลขตัวถัง (VIN)" value="" />
+                    </div>
+                  </div>
+                </div>
+            
+                <br>
+              
+                <div class="title">ผู้แทนจำหน่ายที่ติดตั้งและวันที่ติดตั้ง <span style="color:red; font-weight: bold;">*</span></div>
+                <div class="title-1 mb-2">&nbsp;&nbsp;&nbsp; ศูนย์ตัวแทน :  [{{ contact_wrt_code }}] {{ contact_wrt_name }} {{ contact_wrt_branch | default_if_none:'' }}</div>
+                <div class="row mb-2">
+                  <div class="col-sm-4">
+                    <div class="input-group">
+                      <input  type="hidden" name="cust_warrant_exdate" id="cust_warrant_exdate" placeholder="วันหมดอายุ" />
+                      <span class="input-group-text"><i class="bi bi-calendar-date"></i></span>
+                      <input type="text" class="form-control" name="cust_install_date" id="cust_install_date" placeholder="วันที่ติดตั้ง" autocomplete="off" required />
+                    </div>             
+                  </div>
+                  <div class="col-sm-4">
+                    <input type="hidden" id="selected_cust_provin_install" name="selected_cust_provin_install">
+                    <select name="provinceinstall" class="form-select" id="provinceinstall" onchange="updateSelectedProvinInstall()">
+                      <option value selected disabled hidden>- กรุณาเลือกจังหวัดที่ติดตั้ง -</option>
+                    </select>
+                  </div>
+                  <div class="col-sm-4">
+                    <input type="hidden" id="selected_cust_showroom_install" name="selected_cust_showroom_install" >
+                    <select name="showroominstall" class="form-select" id="showroominstall" onchange="updateSelectedShowInstall()">
+                      {% comment %} <option value selected disabled hidden>- กรุณาเลือกโชว์รูม/ศูนย์ตัวแทนที่ติดตั้ง -</option> {% endcomment %}
+                      <option value selected disabled hidden> [{{ showroom_code }}] {{ showroom_name }} {{ showroom_branch | default_if_none:'' }}</option> 
+                    </select>
+                  </div>
+                </div>
+                
+                <div class="row mb-2">
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <input type="text" name="banna_robcar" id="banna_robcar" class="form-control" placeholder="เฉพาะบานหน้าเต็มบาน" />
+                    </div>
+                  </div> 
+                  <div class="col-sm-4">
+                    <input type="hidden" id="select_banna_robcar_series" name="select_banna_robcar_series" >
+                    <select class="form-select" id="bannarobcar_series" name="bannarobcar_series" onchange="updateSelectedBannaRob()">
+                      <option value selected disabled hidden>- กรุณาเลือก Brand / Series ที่ติดตั้ง -</option>
+                    </select>
+                  </div>
+                  <div class="col-sm-4">
+                    <input type="hidden" id="select_banna_robcar_product" name="select_banna_robcar_product" >
+                    <select class="form-select" id="bannarobcar_product" name="bannarobcar_product" onchange="updateSelectedBannaRobPro()">
+                      <option value selected disabled hidden>- กรุณาเลือกรุ่นฟิล์มที่ติดตั้ง -</option>
+                    </select>
+                  </div>
+                </div>
+            
+                <div class="row mb-2">
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <input type="text" name="robcar_only_position" id="robcar_only_position" class="form-control" placeholder="รอบคัน ยกเว้นบานหน้า" />
+                    </div>
+                  </div> 
+                  <div class="col-sm-4">
+                    <input type="hidden" id="select_robcar_only_series" name="select_robcar_only_series" >
+                    <select class="form-select" id="robcar_only_series" name="robcar_only_series" onchange="updateSelectedRobCar()">
+                      <option value selected disabled hidden>- กรุณาเลือก Brand / Series ที่ติดตั้ง -</option>
+                    </select>
+                  </div>
+                  <div class="col-sm-4">
+                    <input type="hidden" id="select_robcar_only_product" name="select_robcar_only_product" >
+                    <select class="form-select" id="robcar_only_product" name="robcar_only_product" onchange="updateSelectedRobCarPro()">
+                      <option value selected disabled hidden>- กรุณาเลือกรุ่นฟิล์มที่ติดตั้ง -</option>
+                    </select>
+                  </div>
+                
+                </div>
+            
+                  <div class="row mb-2">
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <input type="text" name="another_position" id="another_position" class="form-control" placeholder="อื่นๆ เช่น ซันรูฟ โปรดระบุ"/>
+                      </div>
+                    </div> 
+            
+                    <div class="col-sm-4">
+                      <input type="hidden" id="select_another_series" name="select_another_series" >
+                      <select class="form-select" id="another_series" name="another_series" onchange="updateSelectedAnother()">
+                        <option value selected disabled hidden>- กรุณาเลือก Brand / Series ที่ติดตั้ง -</option>
+                      </select>
+                    </div>
+                    <div class="col-sm-4">
+                      <input type="hidden" id="select_another_product" name="select_another_product" >
+                      <select class="form-select" id="another_product" name="another_product" onchange="updateSelectedAnotherPro()">
+                        <option value selected disabled hidden>- กรุณาเลือกรุ่นฟิล์มที่ติดตั้ง -</option>
+                      </select>
+                    </div>
+            
+                </div>
+            
+                <br>
+              
+                
+            
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                  <button type="button" id="previewButton" class="next action-button btn btn-success">บันทึก</button>
+                </div>
+              </form>
+              
+              <!-- Popup Previews -->
+              <div id="previewModal" class="modal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">กรุณาตรวจสอบข้อมูลของท่านก่อนกดบันทึก</h5>
+                    </div>
+                    <div class="modal-body">
+                      <p id="previewContent"></p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" id="confirmButton" class="btn btn-success">บันทึก</button>
+                      <button type="button" class="btn btn-danger" data-dismiss="modal" id="cancelButton">ยกเลิก</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+  </main>
+
+  <footer id="footer" class="footer position-relative light-background">
+
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6 footer-about">
+          <a href="index.html" class="logo d-flex align-items-center">
+            <span class="sitename">บริษัท เทคโนเซล (เฟรย์) จำกัด</span>
+          </a>
+          <div class="footer-contact pt-3">
+            <p>12/11 หมู่ 18 ถนนตลิ่งชัน-บางบัวทอง แขวงศาลาธรรมสพน์ เขตทวีวัฒนา กรุงเทพฯ 10170</p>
+           {% comment %}  <p class="mt-3"><strong>Phone:</strong> <span>0 2422 2345</span></p>
+            <p><strong>Email:</strong> <span>info@example.com</span></p> {% endcomment %}
+          </div>
+          <div class="social-links d-flex mt-4">
+            <a href="https://www.facebook.com/LaminafilmsHQ/" target="_blank"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.youtube.com/user/laminafilms1/featured" target="_blank"><i class="bi bi-youtube"></i></a>
+            <a href="https://www.instagram.com/lamina_films/?igshid=18m04xpzxr32f" target="_blank"><i class="bi bi-instagram"></i></a>
+            <a href="https://lin.ee/ot1aDYm" target="_blank"><i class="bi bi-chat"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>เกี่ยวกับเรา</h4>
+          <ul>
+            <li><a href="https://www.laminafilms.com/th/aboutus" target="_blank">ประวัติ</a></li>
+            <li><a href="https://www.laminafilms.com/th/award" target="_blank">รางวัลความสำเร็จ</a></li>
+            <li><a href="https://www.laminafilms.com/th/csr" target="_blank">CSR โครงการเพื่อสังคม</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>ข่าวสารโปรโมชั่น</h4>
+          <ul>
+            <li><a href="https://www.laminafilms.com/th/promotion" target="_blank">โปรโมชั่น</a></li>
+            <li><a href="https://www.laminafilms.com/th/news" target="_blank">ข่าวสารประชาสัมพันธ์</a></li>
+            <li><a href="https://www.laminafilms.com/th/knowledgeandarticle" target="_blank">บทความน่ารู้</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>ประเมินราคาฟิล์ม</h4>
+          <ul>
+            <li><a href="https://www.laminafilms.com/th/estimate-car-price" target="_blank">ประเมินราคาฟิล์มรถยนต์</a></li>
+            <li><a href="https://www.laminafilms.com/th/estimate-building-film-price" target="_blank">ประเมินราคาฟิล์มบ้าน/อาคาร</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>การรับประกัน</h4>
+          <ul>
+            <li><a href="https://www.laminafilms.com/th/warranty" target="_blank">ลงทะเบียนรับประกันออนไลน์</a></li>
+            <li><a href="https://www.laminafilms.com/th/warranty/lamina-films-warranty" target="_blank">เงื่อนไขการรับประกัน</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>Copyright 2024</span> <strong class="px-1 sitename"><a href="https://www.laminafilms.com/th/index" target="_blank">Lamina Films</a></strong><span>All Rights Reserved</span></p>
+      <div class="credits">
+        Developed by IT Team Lamina Films
+        {% comment %} Developed by  <a href="mailto: dev.boonchoo@gmail.com" target="_blank">e-pong-dev</a> & Design by <a href="https://www.youtube.com/@diffindosubthai4602" target="_blank">清新</a></h6> {% endcomment %}
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'stylehome/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'stylehome/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'stylehome/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'stylehome/vendor/swiper/swiper-bundle.min.js' %}"></script>
+
+  <!-- Main JS File -->
+  <script src="{% static 'stylehome/js/main.js' %}"></script>
+
+   {% comment %} <!-- Jquery JS-->
+   <script src="{% static 'styleform/vendor/jquery/jquery.min.js' %}"></script>
+   <!-- Vendor JS-->
+   <script src="{% static 'styleform/vendor/select2/select2.min.js' %}"></script>
+   <script src="{% static 'styleform/vendor/jquery-validate/jquery.validate.min.js' %}"></script>
+   <script src="{% static 'styleform/vendor/bootstrap-wizard/bootstrap.min.js' %}"></script>
+   <script src="{% static 'styleform/vendor/bootstrap-wizard/jquery.bootstrap.wizard.min.js' %}"></script>
+   <script src="{% static 'styleform/vendor/datepicker/moment.min.js' %}"></script>
+   <script src="{% static 'styleform/vendor/datepicker/daterangepicker.js' %}"></script>
+
+   <!-- Main JS-->
+   <script src="{% static 'styleform/js/global.js' %}"></script> {% endcomment %}
+
+
+
+<script>
+    $('#cust_sex').select2( {
+        theme: "bootstrap-5",
+        width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+        placeholder: $( this ).data( 'placeholder' ),
+    });
+    
+    $('#cust_subdistrict').select2( {
+      theme: "bootstrap-5",
+        width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+        placeholder: $( this ).data( 'placeholder' ),
+    });
+    
+    $('#cust_district').select2( {
+      theme: "bootstrap-5",
+        width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+        placeholder: $( this ).data( 'placeholder' ),
+    });
+    
+    $('#cust_province').select2( {
+      theme: "bootstrap-5",
+        width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+        placeholder: $( this ).data( 'placeholder' ),
+    });
+    
+    $('#cust_carbrand').select2( {
+      theme: "bootstrap-5",
+        width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+        placeholder: $( this ).data( 'placeholder' ),
+    });
+    
+    $('#cust_carmodel').select2( {
+      theme: "bootstrap-5",
+        width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+        placeholder: $( this ).data( 'placeholder' ),
+    });
+    
+    $('#locationinstall').select2( {
+      theme: "bootstrap-5",
+        width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+        placeholder: $( this ).data( 'placeholder' ),
+    });
+    
+    $('#provinceinstall').select2( {
+        theme: "bootstrap-5",
+        width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+        placeholder: $( this ).data( 'placeholder' ),
+    });
+    
+    $('#showroominstall').select2( {
+      theme: "bootstrap-5",
+      width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+      placeholder: $( this ).data( 'placeholder' ),
+    });
+    
+    $('#bannarobcar_series').select2( {
+      theme: "bootstrap-5",
+      width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+      placeholder: $( this ).data( 'placeholder' ),
+    });
+    
+    $('#bannarobcar_product').select2( {
+      theme: "bootstrap-5",
+      width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+      placeholder: $( this ).data( 'placeholder' ),
+    });
+    
+    $('#robcar_only_series').select2( {
+      theme: "bootstrap-5",
+      width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+      placeholder: $( this ).data( 'placeholder' ),
+    });
+    $('#robcar_only_product').select2( {
+      theme: "bootstrap-5",
+      width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+      placeholder: $( this ).data( 'placeholder' ),
+    });
+    
+    $('#another_series').select2( {
+      theme: "bootstrap-5",
+      width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+      placeholder: $( this ).data( 'placeholder' ),
+    });
+    $('#another_product').select2( {
+      theme: "bootstrap-5",
+      width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+      placeholder: $( this ).data( 'placeholder' ),
+    });
+    </script>
+
+
+{% comment %} คำนวณวันหมดประกัน {% endcomment %}
+<script>
+  $(function() {
+    $('#cust_install_date').datetimepicker({
+      timepicker: false,
+      format: 'Y-m-d',
+      autoclose: true,
+      maxDate: new Date(),
+      defaultDate: new Date(),
+      onSelectDate: function(ct, $i) {
+        calculateExpirationDate(ct);
+      }
+    });
+  
+    $('#cust_birthday').datetimepicker({
+      timepicker: false,
+      format: 'Y-m-d',
+      autoclose: true,
+      maxDate: new Date(),
+      defaultDate: new Date()
+    });
+  
+    function calculateExpirationDate(installDate) {
+      if (installDate) {
+        const expirationDate = new Date(installDate.getTime());
+  
+        expirationDate.setFullYear(expirationDate.getFullYear() + 7);
+  
+        const dd = String(expirationDate.getDate()).padStart(2, '0');
+        const mm = String(expirationDate.getMonth() + 1).padStart(2, '0'); 
+        const yyyy = expirationDate.getFullYear();
+  
+        $('#cust_warrant_exdate').val(`${yyyy}-${mm}-${dd}`);
+      } else {
+        $('#cust_warrant_exdate').val(''); 
+      }
+    }
+  });
+</script>
+
+
+    {% comment %} Address Selected {% endcomment %}
+<script>
+  $(document).ready(function(){
+      $.ajax({
+          url: '{% url 'wrtonline:find_provinces' %}',
+          method: 'GET',
+          success: function(data){
+              let $selectProvince = $('#cust_province');
+              $.each(data, function(index, province){
+                  $selectProvince.append('<option value="'+ province.id +'">'+ province.name +'</option>');
+              });
+          },
+          error: function(xhr, status, error){
+              console.error('Error finding provinces:', error);
+          }
+      });
+      
+      $('#cust_province').change(function(){
+          let provinceId = $(this).val();
+          let provinceName = $("#cust_province option:selected").text();
+          $("#selected_province_name").val(provinceName);
+          $("#cust_province_id").val(provinceId);
+          $("#cust_district").empty().append('<option value selected disabled hidden>- กรุณาเลือกอำเภอ -</option>'); 
+          $("#cust_subdistrict").empty().append('<option value selected disabled hidden>- ตำบล -</option>'); 
+          $("#cust_postalcode").val("");
+          $("#cust_postalid").val("");
+
+          $.ajax({
+              url: '{% url 'wrtonline:find_districts' %}',
+              method: 'POST',
+              data: {
+                  provinceId: provinceId
+              },
+              success: function(data){
+                  let $selectDistrict = $('#cust_district');
+                  $.each(data, function(index, district){
+                      $selectDistrict.append('<option value="'+ district.id +'">'+ district.name +'</option>');
+                  });
+              },
+              error: function(xhr, status, error){
+                  console.error('Error finding districts:', error);
+              }
+          });
+      });
+
+
+      $('#cust_district').change(function(){
+        let districtId = $(this).val();
+        let districtName = $("#cust_district option:selected").text();
+        $("#selected_district_name").val(districtName);
+        $("#cust_district_id").val(districtId);
+        $("#cust_subdistrict").empty().append('<option value selected disabled hidden>- กรุณาเลือกตำบล -</option>'); 
+        $("#cust_postalcode").val("");
+        $("#cust_postalid").val("");
+
+        $.ajax({
+            url: '{% url 'wrtonline:find_subdistricts' %}',
+            method: 'POST',
+            data: {
+                districtId: districtId
+            },
+            success: function(data){
+                let $selectSubDistrict = $('#cust_subdistrict');
+                $.each(data, function(index, subdistrict){
+                    $selectSubDistrict.append('<option value="'+ subdistrict.id +'">'+ subdistrict.name +'</option>');
+                });
+            },
+            error: function(xhr, status, error){
+                console.error('Error finding subdistricts:', error);
+            }
+        });
+    });
+
+
+    $('#cust_subdistrict').change(function(){
+      let SubdistrictId = $(this).val();
+      let subdistrictName = $("#cust_subdistrict option:selected").text();
+      $("#selected_subdistrict_name").val(subdistrictName);
+      $("#cust_subdistrict_id").val(SubdistrictId);
+      //$("#cust_postalcode").empty().append('<option value selected disabled hidden>- กรุณาเลือกตำบล -</option>'); 
+      $("#cust_postalcode").val("");
+      $("#cust_postalid").val("");
+
+      $.ajax({
+          url: '{% url 'wrtonline:find_zipcode' %}',
+          method: 'POST',
+          data: {
+              SubdistrictId: SubdistrictId
+          },
+          success: function(data){
+              let $selectZipcode = $('#cust_postalcode');
+              let $selectZipcodeid = $('#cust_postalid');
+              $.each(data, function(index, zipcode){
+                  let postalcode = zipcode.code;
+                  let postalid = zipcode.id;
+                  $selectZipcode.val(postalcode);
+                  $selectZipcodeid.val(postalid);
+              });
+          },
+          error: function(xhr, status, error){
+              console.error('Error finding Zipcode:', error);
+          }
+      });
+  });
+
+  });
+  </script>
+
+  {% comment %} Car Selected {% endcomment %}
+
+  <script>
+    $(document).ready(function(){
+        $.ajax({
+            url: '{% url 'wrtonline:find_carbrand' %}',
+            method: 'GET',
+            success: function(data){
+                let $selectCarBrand = $('#cust_carbrand');
+                $.each(data, function(index, carBrand){
+                    $selectCarBrand.append('<option value="'+ carBrand.id +'">'+ carBrand.name +'</option>');
+                });
+            },
+            error: function(xhr, status, error){
+                console.error('Error finding car brand:', error);
+            }
+        });
+        
+        $('#cust_carbrand').change(function(){
+            let carbrandId = $(this).val();
+            $("#cust_carmodel").empty().append('<option value selected disabled hidden>- กรุณาเลือกรุ่นรถ -</option>'); 
+  
+            $.ajax({
+                url: '{% url 'wrtonline:find_carmodel' %}',
+                method: 'POST',
+                data: {
+                    carbrandId: carbrandId
+                },
+                success: function(data){
+                    let $selectCarModel = $('#cust_carmodel');
+                    $.each(data, function(index, carmodel){
+                        $selectCarModel.append('<option value="'+ carmodel.id +'">'+ carmodel.name +'</option>');
+                    });
+                },
+                error: function(xhr, status, error){
+                    console.error('Error finding carmodel:', error);
+                }
+            });
+
+            updateSelectedCarBrand();
+        });
+  
+        $('#cust_carmodel').change(function(){
+            updateSelectedCarModel();
+        });
+    });
+  
+    function updateSelectedCarBrand() {
+      var selectBrand = document.getElementById("cust_carbrand");
+      var selectedTextBrand = selectBrand.options[selectBrand.selectedIndex].text;
+      var selectedBrandId = selectBrand.value;
+      
+      document.getElementById("selected_carbrand_name").value = selectedTextBrand;
+      document.getElementById("cust_carbrand_id").value = selectedBrandId;  
+    }
+  
+    function updateSelectedCarModel() {
+      var selectModel = document.getElementById("cust_carmodel");
+      var selectedTextModel = selectModel.options[selectModel.selectedIndex].text;
+      var selectedModelId = selectModel.value;
+  
+      document.getElementById("selected_carmodel_name").value = selectedTextModel;
+      document.getElementById("cust_carmodel_id").value = selectedModelId;  
+    }
+  </script>
+  
+
+  {% comment %} Select Gender  {% endcomment %}
+  {% comment %} <script>
+    $(document).ready(function(){
+        $.ajax({
+            url: '{% url 'wrtonline:find_gender' %}',
+            method: 'GET',
+            success: function(data){
+                let $selectGender= $('#cust_sex');
+                $.each(data, function(index, genderData){
+                    $selectGender.append('<option value="'+ genderData.id +'">'+ genderData.name +'</option>');
+                });
+            },
+            error: function(xhr, status, error){
+                console.error('Error finding genderData:', error);
+            }
+        });
+      });
+
+
+        function updateSelectedCustSex() {
+          var select = document.getElementById("cust_sex");
+          var selectedText = select.options[select.selectedIndex].text;
+          document.getElementById("cust_gender").value = selectedText;
+        }
+      
+</script> {% endcomment %}
+
+{% comment %} Showroom Install Selected  {% endcomment %}
+
+<script>
+  $(document).ready(function(){
+      $.ajax({
+          url: '{% url 'wrtonline:find_provinces_contact' %}',
+          method: 'GET',
+          success: function(data){
+              let $selectProvinCon = $('#provinceinstall');
+              $.each(data, function(index, provinCon){
+                  $selectProvinCon.append('<option value="'+ provinCon.id +'">'+ provinCon.name +'</option>');
+              });
+          },
+          error: function(xhr, status, error){
+              console.error('Error finding province with contact:', error);
+          }
+      });
+      
+      $('#provinceinstall').change(function(){
+          let provinConId = $(this).val();
+          $("#showroominstall").empty().append('<option value selected disabled hidden>- กรุณาเลือกโชว์รูมที่ติดตั้ง -</option>'); 
+
+          $.ajax({
+              url: '{% url 'wrtonline:find_contact_province' %}',
+              method: 'POST',
+              data: {
+                  provinConId: provinConId
+              },
+              success: function(data){
+                  let $selectconProvin = $('#showroominstall');
+                  $.each(data, function(index, conProvin){
+                      $selectconProvin.append('<option value="'+ conProvin.id +'">'+ conProvin.name_branch +'</option>');
+                  });
+              },
+              error: function(xhr, status, error){
+                  console.error('Error finding contact with province:', error);
+              }
+          });
+      });
+
+
+  });
+
+  function updateSelectedProvinInstall() {
+    var selectProvinCon = document.getElementById("provinceinstall");
+    var selectedTextProvinCon = selectProvinCon.options[selectProvinCon.selectedIndex].text;
+    document.getElementById("selected_cust_provin_install").value = selectedTextProvinCon;
+  }
+
+  function updateSelectedShowInstall() {
+    var selectShowRoom = document.getElementById("showroominstall");
+    var selectedTextShowRoom = selectShowRoom.options[selectShowRoom.selectedIndex].text;
+    document.getElementById("selected_cust_showroom_install").value = selectedTextShowRoom;
+  }
+
+  function updateSelectedLocationInstall() {
+    var selectLocation = document.getElementById("locationinstall");
+    var selectedTextLocation = selectLocation.options[selectLocation.selectedIndex].text;
+    document.getElementById("selected_cust_location").value = selectedTextLocation;
+  }
+  </script> 
+
+  {% comment %} <script type="text/javascript">
+    $(function(){
+      $('#cust_install_date').datetimepicker({
+        timepicker: false,
+        format: 'Y-m-d',
+        autoclose: true,
+        maxDate: new Date(),
+        defaultDate: new Date() 
+      });    
+
+        
+        $('#cust_birthday').datetimepicker({
+          timepicker:false,
+          format:'Y-m-d',
+          autoclose: true,
+          maxDate: new Date(),
+          defaultDate: new Date()
+      });     
+    });
+</script> {% endcomment %}
+
+
+{% comment %} Banna Robcar Selected {% endcomment %}
+{% comment %}เหลือใส่ url ของ brand serires product {% url 'wrtonline:' %} {% endcomment %}
+<script>
+  $(document).ready(function(){
+      $.ajax({
+          url: '{% url 'wrtonline:find_provinces_contact' %}',
+          method: 'GET',
+          success: function(data){
+              let $selectBanRob = $('#bannarobcar_series');
+              $.each(data, function(index, banrob){
+                  $selectBanRob.append('<option value="'+ banrob.id +'">'+ banrob.name +'</option>');
+              });
+          },
+          error: function(xhr, status, error){
+              console.error('Error finding banna robcar Series:', error);
+          }
+      });
+      
+      $('#bannarobcar_series').change(function(){
+          let banrobId = $(this).val();
+          $("#bannarobcar_product").empty().append('<option value selected disabled hidden>- กรุณาเลือกรุ่นฟิล์มที่ติดตั้ง -</option>'); 
+
+          $.ajax({
+              url: '',
+              method: 'POST',
+              data: {
+                  banrobId: banrobId
+              },
+              success: function(data){
+                  let $selectBanrobPro = $('#bannarobcar_product');
+                  $.each(data, function(index, banrobPro){
+                      $selectBanrobPro.append('<option value="'+ banrobPro.id +'">'+ banrobPro.name +'</option>');
+                  });
+              },
+              error: function(xhr, status, error){
+                  console.error('Error finding banna robcar Product:', error);
+              }
+          });
+      });
+
+
+  });
+
+  function updateSelectedBannaRob() {
+    var selectBanrob = document.getElementById("bannarobcar_series");
+    var selectedTextBanrobselectBanrob = selectBanrob.options[selectBanrob.selectedIndex].text;
+    document.getElementById("select_banna_robcar_series").value = selectedTextBanrobselectBanrob;
+  }
+
+  function updateSelectedBannaRobPro() {
+    var selectBanrobPro = document.getElementById("bannarobcar_product");
+    var selectedTextBanrobPro = selectBanrobPro.options[selectBanrobPro.selectedIndex].text;
+    document.getElementById("select_banna_robcar_product").value = selectedTextBanrobPro;
+  }
+
+  </script> 
+
+
+{% comment %} Robcar Selected {% endcomment %}
+{% comment %}เหลือใส่ url ของ brand serires product {% url 'wrtonline:' %} {% endcomment %}
+<script>
+  $(document).ready(function(){
+      $.ajax({
+          url: '',
+          method: 'GET',
+          success: function(data){
+              let $selectRobcar = $('#robcar_only_series');
+              $.each(data, function(index, robcar){
+                  $selectRobcar.append('<option value="'+ robcar.id +'">'+ robcar.name +'</option>');
+              });
+          },
+          error: function(xhr, status, error){
+              console.error('Error finding robcar Series:', error);
+          }
+      });
+      
+      $('#robcar_only_series').change(function(){
+          let robcarId = $(this).val();
+          $("#robcar_only_product").empty().append('<option value selected disabled hidden>- กรุณาเลือกรุ่นฟิล์มที่ติดตั้ง -</option>'); 
+
+          $.ajax({
+              url: '',
+              method: 'POST',
+              data: {
+                  robcarId: robcarId
+              },
+              success: function(data){
+                  let $selectrobPro = $('#robcar_only_product');
+                  $.each(data, function(index, robPro){
+                      $selectrobPro.append('<option value="'+ robPro.id +'">'+ robPro.name +'</option>');
+                  });
+              },
+              error: function(xhr, status, error){
+                  console.error('Error finding robcar Product:', error);
+              }
+          });
+      });
+
+
+  });
+
+  function updateSelectedRobCar() {
+    var selectrob = document.getElementById("robcar_only_series");
+    var selectedTextrob = selectrob.options[selectrob.selectedIndex].text;
+    document.getElementById("select_robcar_only_series").value = selectedTextrob;
+  }
+
+  function updateSelectedRobCarPro() {
+    var selectrobPro = document.getElementById("robcar_only_product");
+    var selectedTextrobPro = selectrobPro.options[selectBanrobPro.selectedIndex].text;
+    document.getElementById("select_robcar_only_product").value = selectedTextrobPro;
+  }
+
+  </script> 
+
+
+{% comment %} Another Selected {% endcomment %}
+{% comment %}เหลือใส่ url ของ brand serires product {% url 'wrtonline:' %} {% endcomment %}
+<script>
+  $(document).ready(function(){
+      $.ajax({
+          url: '',
+          method: 'GET',
+          success: function(data){
+              let $selectAnother = $('#another_series');
+              $.each(data, function(index, another){
+                  $selectAnother.append('<option value="'+ another.id +'">'+ another.name +'</option>');
+              });
+          },
+          error: function(xhr, status, error){
+              console.error('Error finding another Series:', error);
+          }
+      });
+      
+      $('#another_series').change(function(){
+          let anotherId = $(this).val();
+          $("#another_product").empty().append('<option value selected disabled hidden>- กรุณาเลือกรุ่นฟิล์มที่ติดตั้ง -</option>'); 
+
+          $.ajax({
+              url: '',
+              method: 'POST',
+              data: {
+                  anotherId: anotherId
+              },
+              success: function(data){
+                  let $selectanotherPro = $('#another_product');
+                  $.each(data, function(index, anotherPro){
+                      $selectanotherPro.append('<option value="'+ anotherPro.id +'">'+ anotherPro.name +'</option>');
+                  });
+              },
+              error: function(xhr, status, error){
+                  console.error('Error finding another Product:', error);
+              }
+          });
+      });
+
+
+  });
+
+  function updateSelectedAnother() {
+    var selectanother = document.getElementById("another_series");
+    var selectedTextanother = selectanother.options[selectanother.selectedIndex].text;
+    document.getElementById("select_another_series").value = selectedTextanother;
+  }
+
+  function updateSelectedAnotherPro() {
+    var selectanotherPro = document.getElementById("another_product");
+    var selectedTextanotherPro = selectrobPro.options[selectBananotherPro.selectedIndex].text;
+    document.getElementById("select_another_product").value = selectedTextanotherPro;
+  }
+
+  </script> 
+
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      let form = document.getElementById("frm");
+      let submitBtn = document.getElementById("submitBtn");
+      let cust_vinInput = document.getElementById("cust_vin");
+      let blackPlateInput = document.getElementById("cust_liceseplateblack");
+
+      form.addEventListener("submit", function(event) {
+          let vinValue = cust_vinInput.value.trim();
+          let plateValue = blackPlateInput.value.trim();
+          
+          if (vinValue === "" || plateValue === "") {
+              event.preventDefault();
+              alert("กรุณากรอกข้อมูลในช่อง 'เลขทะเบียนรถป้ายดำ' หรือ 'หมายเลขตัวถัง (VIN)' อย่างใดอย่างหนึ่ง");
+          }
+      });
+
+  });
+</script>
+
+
+
+<script>
+  let labelMapping = {
+    cust_name: "ชื่อ - นามสกุล",
+    cust_gender: "เพศ",
+    mail: "E-mail",
+    cust_mail: "E-mail Address",
+    cust_phone: "เบอร์ติดต่อ",
+    cust_address: "ที่อยู่",
+    selected_province_name: "จังหวัด",
+    selected_district_name: "อำเภอ",
+    selected_subdistrict_name: "ตำบล",
+    cust_postalcode: "รหัสไปรษณีย์",
+    selected_carbrand_name: "ยี่ห้อรถ",
+    selected_carmodel_name: "รุ่นรถ",
+    cust_liceseplatered: "เลขทะเบียนรถป้ายแดง",
+    cust_liceseplateblack: "เลขทะเบียนรถป้ายดำ",
+    cust_vin: "หมายเลขตัวถัง (VIN)",
+    selected_cust_provin_install: "จังหวัดที่ติดตั้ง",
+    selected_cust_showroom_install: "โชว์รูมติดตั้ง",
+    cust_install_date: "วันที่ติดตั้ง",
+    banna_robcar: "ติดตั้งเฉพาะบานหน้าเต็มบาน",
+    select_banna_robcar_series: "Brand / Series ที่ติดตั้ง",
+    select_banna_robcar_product: "รุ่นฟิล์มที่ติดตั้ง",
+    robcar_only_position: "ติดตั้งรอบคัน ยกเว้นบานหน้า",
+    select_robcar_only_series: "Brand / Series ที่ติดตั้ง",
+    select_robcar_only_product: "รุ่นฟิล์มที่ติดตั้ง",
+    another_position: "ติดตั้งบริเวณอื่น ๆ",
+    select_another_series: "Brand / Series ที่ติดตั้ง",
+    select_another_product: "รุ่นฟิล์มที่ติดตั้ง"
+  };
+  
+  document.getElementById('previewButton').addEventListener('click', function() {
+    let formData = new FormData(document.getElementById('frm'));
+    let previewContent = '';
+  
+    formData.forEach((value, key) => {
+      if (labelMapping[key]) { 
+        let label = labelMapping[key];
+        previewContent += `<strong>${label}</strong>: ${value}<br>`;
+      }
+    });
+  
+    document.getElementById('previewContent').innerHTML = previewContent;
+    $('#previewModal').modal('show');
+  });
+  
+  document.getElementById('confirmButton').addEventListener('click', function(event) {
+    let licensePlateBlack = document.getElementById('cust_liceseplateblack').value;
+    let vin = document.getElementById('cust_vin').value;
+    
+    if (!licensePlateBlack && !vin) {
+      event.preventDefault();
+      alert('กรุณากรอกเลขทะเบียนรถป้ายดำ หรือ หมายเลขตัวถัง (VIN) อย่างน้อยหนึ่งช่อง');
+      return;
+    }
+    
+    if (document.getElementById('frm').checkValidity()) {
+      document.getElementById('frm').submit();
+    } else {
+      event.preventDefault();
+      alert('กรุณากรอกชื่อ-นามสกุล, วัน/เดือน/ปีเกิด, เพศ และ เบอร์โทรให้ครบถ้วน');
+    }
+  });
+  
+  document.getElementById('cancelButton').addEventListener('click', function() {
+    $('#previewModal').modal('hide');
+  });
+</script>
+
+
+</body>
+
+</html>

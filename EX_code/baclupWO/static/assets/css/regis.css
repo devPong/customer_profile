@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&display=swap');
+
+html, body {
+    background: -webkit-linear-gradient(left, #1da5ff, #60c5ff);
+    margin: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'IBM Plex Sans Thai', sans-serif;
+}
+
+.card {
+    background: #fff;
+    width: 60%;
+    height: 50%;
+    border-radius: 24px;
+    box-shadow: 16px 16px 8px rgba(0, 0, 0, .1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.picture-card {
+    width: 50%;
+    height: 100%;
+    align-self: flex-start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-form-card {
+    height: 100%;
+    width: 300%;
+}
+
+.contact-form {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+}
+
+.form-header {
+    font-size: 2em;
+    font-weight: 700;
+    align-self: flex-start;
+}
+
+formbold-main-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px;
+}
+
+.formbold-form-wrapper {
+    margin: 0 auto;
+    max-width: 550px;
+    width: 100%;
+}
+
+.formbold-form-input {
+    width: 100%;
+    padding: 13px 22px;
+    border-radius: 6px;
+    border: 1px solid #DDE3EC;
+    background: white;
+    font-weight: 500;
+    font-size: 16px;
+    color: #536387;
+    outline: none;
+    resize: none;
+}
+
+.formbold-form-input:focus {
+    border-color: #2e94f4;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+.formbold-email-subscription-form {
+    display: flex;
+    gap: 15px;
+}
+
+.formbold-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 13px 25px;
+    border: none;
+    font-weight: 500;
+    background-color: #2360dc;
+    color: white;
+    cursor: pointer;
+}
+
+.formbold-btn:hover {
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+.modal-dialog {
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+.modal-content {
+    height: 100%;
+    border: 0;
+    border-radius: 0;
+}
+.modal-body {
+    overflow-y: auto;
+}
+
+.highlight {
+    animation: highlight 1s ease-out;
+    color: red; 
+}
+
+@keyframes highlight {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+        color: red;
+    }
+    100% {
+        transform: scale(1);
+        color: red;
+    }
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: 100%;
+        height: 35%;
+        flex-direction: column;
+    }
+    
+    .picture-card {
+        width: 100%;
+        height: auto;
+    }
+    
+    .contact-form-card {
+        width: 100%;
+        height: auto;
+    }
+
+    .modal-dialog {
+        width: 100%;
+        max-width: none;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    .modal-content {
+        height: 100%;
+        border: 0;
+        border-radius: 0;
+    }
+    .modal-body {
+        overflow-y: auto;
+    }
+
+    .highlight {
+        animation: highlight 1s ease-out;
+        color: red; 
+    }
+
+    @keyframes highlight {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.2);
+            color: red;
+        }
+        100% {
+            transform: scale(1);
+            color: red;
+        }
+    }
+}

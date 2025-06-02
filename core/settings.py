@@ -88,8 +88,17 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'customer_profile',
         'USER': 'postgres',
-        'PASSWORD': '3489',
+        # 'PASSWORD': '3489',
+        'PASSWORD': 'P@ssw0rd',
         'HOST': 'localhost', 
+        'PORT': '5432',
+    },
+      'erp_db': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'lamina-02-02-65',
+        'USER': 'netforce',
+        'PASSWORD': 'sqlblalba',
+        'HOST': '172.17.1.202', 
         'PORT': '5432',
     },
 }

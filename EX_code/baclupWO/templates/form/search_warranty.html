@@ -1,0 +1,334 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>LAMINA - Warranty Online</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/favicon_io/android-chrome-192x192.png' %}" rel="icon">
+  <link href="{% static 'assets/img/favicon_iofavicon-32x32.png' %}" rel="apple-touch-icon">
+
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'stylehome/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'stylehome/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'stylehome/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'stylehome/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'stylehome/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="{% static 'stylehome/css/main.css' %}" rel="stylesheet">
+  {% comment %} <link href="{% static 'assets/css/checkbox.css' %}" rel="stylesheet"> {% endcomment %}
+
+</head>
+
+<body class="starter-page-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+
+      <a href="{% url 'wrtonline:homeWarranty' %}" class="logo d-flex align-items-center me-auto">
+        <img src="{% static 'assets/img/Lamina-DIGITAL-White.jpg' %}" alt="">
+        {% comment %} <h1 class="sitename">LAMINA</h1> {% endcomment %}
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        {% comment %} <ul>
+          <li><a href="{% url 'wrtonline:homeWarranty' %}" class="active">Home</a></li>
+        </ul> {% endcomment %}
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+       <!-- Contact Section -->
+    <section id="contact" class="contact section" style="margin-top: 5%">
+
+            <div class="container text-center">
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                  <h1 style="color:#032686;">ตรวจสอบบัตรรับประกันคุณภาพออนไลน์</h1> <br>
+                </div>
+            </div>
+        
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+  
+          <div class="row gy-12 mt-1">
+  
+            <div class="col-lg-12">
+              <form action="{% url 'wrtonline:form_warranty_views' %}" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="400">
+                {% csrf_token %}
+                
+                <input type="hidden" id="brand_wrt" name="brand_wrt" value="lamina">
+                
+                  <div class="col-md-12">
+                    <label> <input type="radio" class="form-check-input" name="find_method" id="searchnum" value="wNum"> ค้นหาผ่านหมายเลขบัตรรับประกัน </label>
+                    <input type="text" style = "display: none; margin-top: 0.5%;" class="form-control" id="number_wrt" name="number_wrt" placeholder="หมายเลขบัตรรับประกัน" maxlength="15" data-mark="99-99-999-999-9">
+                  </div>
+
+
+                <div class="col-md-12" style="margin-top: 1%">
+                  <label><input type="radio" class="form-check-input" name="find_method" id="searchname" value="cust"> ค้นหาผ่านชื่อ-นามสกุล / หมายเลขทะเบียนรถ / หมายเลขตัวถัง</label>
+                  <p style="color:red; font-size: 13px;">** หากมี ณ ในชื่อกรุณาใส่ ณ ในช่องนามสกุลเพื่อการค้นหาที่ถูกต้อง **</span></p>
+                  <div class="col-md-12" >
+                    <input type="text" style = "display: none;" class="form-control" id="cust_firstname" name="cust_firstname" placeholder="ชื่อ">
+                   
+                    <input type="text" style = "display: none;" class="form-control" id="cust_lastname" name="cust_lastname" placeholder="นามสกุล">
+                    
+                  </div>
+
+                  <div class="d-flex align-items-center" style="margin-top: 0.5%">
+                    <label id="nameliceseplateblack" class="mr-3"> 
+                        <input class="form-check-input" type="radio" name="cardetail_condition" value="license" id="cust_liceseplateblack" style="display: none;"> หมายเลขทะเบียนรถ
+                    </label>
+                    &nbsp; &nbsp;
+                    <label id="namevin"> 
+                        <input class="form-check-input" type="radio" name="cardetail_condition" value="vin" id="cust_vin" style="display: none;"> หมายเลขตัวถัง
+                    </label>
+                  </div>
+
+                  <input type="text" style = "display: none;" class="form-control" id="car_data" name="car_data" placeholder="กรุณากรอกข้อมูลตามที่ระบุ เช่น หากเลือกหมายเลขทะเบียนรถ ให้กรอกหมายเลขทะเบียนรถ">
+                
+                </div>
+  
+                  <div class="col-md-12 text-center" style="margin-top: 3%">
+                   
+                    <button type="submit">ตรวจสอบการลงทะเบียน</button>
+                  </div>
+
+                  <div class="col-md-12" style="margin-top: 3%" align="right">   
+                    <a href="http://147.50.4.136:8001/registersWarranty" class="read-more" ><span>หน้าลงทะเบียนรับใบรับประกันคุณภาพ</span><i class="bi bi-arrow-right"></i></a> 
+                  </div>
+
+              </form>
+            </div> <!-- End Contact Form -->
+          </div>
+        </div>
+      </section>
+  </main>
+
+  <footer id="footer" class="footer position-relative light-background">
+
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6 footer-about">
+          <a href="index.html" class="logo d-flex align-items-center">
+            <span class="sitename">บริษัท เทคโนเซล (เฟรย์) จำกัด</span>
+          </a>
+          <div class="footer-contact pt-3">
+            <p>12/11 หมู่ 18 ถนนตลิ่งชัน-บางบัวทอง แขวงศาลาธรรมสพน์ เขตทวีวัฒนา กรุงเทพฯ 10170</p>
+           {% comment %}  <p class="mt-3"><strong>Phone:</strong> <span>0 2422 2345</span></p>
+            <p><strong>Email:</strong> <span>info@example.com</span></p> {% endcomment %}
+          </div>
+          <div class="social-links d-flex mt-4">
+            <a href="https://www.facebook.com/LaminafilmsHQ/" target="_blank"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.youtube.com/user/laminafilms1/featured" target="_blank"><i class="bi bi-youtube"></i></a>
+            <a href="https://www.instagram.com/lamina_films/?igshid=18m04xpzxr32f" target="_blank"><i class="bi bi-instagram"></i></a>
+            <a href="https://lin.ee/ot1aDYm" target="_blank"><i class="bi bi-chat"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>เกี่ยวกับเรา</h4>
+          <ul>
+            <li><a href="https://www.laminafilms.com/th/aboutus" target="_blank">ประวัติ</a></li>
+            <li><a href="https://www.laminafilms.com/th/award" target="_blank">รางวัลความสำเร็จ</a></li>
+            <li><a href="https://www.laminafilms.com/th/csr" target="_blank">CSR โครงการเพื่อสังคม</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>ข่าวสารโปรโมชั่น</h4>
+          <ul>
+            <li><a href="https://www.laminafilms.com/th/promotion" target="_blank">โปรโมชั่น</a></li>
+            <li><a href="https://www.laminafilms.com/th/news" target="_blank">ข่าวสารประชาสัมพันธ์</a></li>
+            <li><a href="https://www.laminafilms.com/th/knowledgeandarticle" target="_blank">บทความน่ารู้</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>ประเมินราคาฟิล์ม</h4>
+          <ul>
+            <li><a href="https://www.laminafilms.com/th/estimate-car-price" target="_blank">ประเมินราคาฟิล์มรถยนต์</a></li>
+            <li><a href="https://www.laminafilms.com/th/estimate-building-film-price" target="_blank">ประเมินราคาฟิล์มบ้าน/อาคาร</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>การรับประกัน</h4>
+          <ul>
+            <li><a href="https://www.laminafilms.com/th/warranty" target="_blank">ลงทะเบียนรับประกันออนไลน์</a></li>
+            <li><a href="https://www.laminafilms.com/th/warranty/lamina-films-warranty" target="_blank">เงื่อนไขการรับประกัน</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>Copyright 2024</span> <strong class="px-1 sitename"><a href="https://www.laminafilms.com/th/index" target="_blank">Lamina Films</a></strong><span>All Rights Reserved</span></p>
+      <div class="credits">
+        Developed by IT Team Lamina Films
+        {% comment %} Developed by  <a href="mailto: dev.boonchoo@gmail.com" target="_blank">e-pong-dev</a> & Design by <a href="https://www.youtube.com/@diffindosubthai4602" target="_blank">清新</a></h6> {% endcomment %}
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'stylehome/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'stylehome/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'stylehome/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'stylehome/vendor/swiper/swiper-bundle.min.js' %}"></script>
+
+  <!-- Main JS File -->
+  <script src="{% static 'stylehome/js/main.js' %}"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      let numberInput = document.getElementById("number_wrt");
+  
+      numberInput.addEventListener("input", function() {
+        let inputValue = numberInput.value;
+        let formattedValue = formatNumber(inputValue);
+        numberInput.value = formattedValue;
+      });
+  
+      function formatNumber(inputValue) {
+        let numericValue = inputValue.replace(/\D/g, "");
+  
+        let formattedValue = "";
+        for (let i = 0; i < numericValue.length; i++) {
+          if (i === 2 || i === 4 || i === 7 || i === 10) {
+            formattedValue += "-";
+          }
+          formattedValue += numericValue.charAt(i);
+        }
+  
+        return formattedValue;
+      }
+    });
+</script>
+
+<script>
+  document.querySelector('form').addEventListener('submit', function(event) {
+    
+    let numberWrtField = document.getElementById('number_wrt');
+    let custFirstNameField = document.getElementById('cust_firstname');
+    let custLastNameField = document.getElementById('cust_lastname');
+    let carDataField = document.getElementById('car_data');
+    let licenseRadio = document.getElementById('cust_liceseplateblack');
+    let vinRadio = document.getElementById('cust_vin');
+
+    let selectedFindMethod = document.querySelector('input[name="find_method"]:checked');
+    let selectedCondition = document.querySelector('input[name="cardetail_condition"]:checked');    
+
+    if (selectedFindMethod) {
+      if (selectedFindMethod.id === 'searchnum') {
+          if (!numberWrtField.value.trim()) {
+              alert('กรุณากรอกหมายเลขบัตรรับประกัน');
+              event.preventDefault();
+          }
+      } else if (selectedFindMethod.id === 'searchname') {
+          if (!custFirstNameField.value.trim() || !custLastNameField.value.trim() ) {
+              alert('กรุณากรอกชื่อ นามสกุล และข้อมูลรถ');
+              event.preventDefault();
+          }
+
+          if (!selectedCondition || !carDataField.value.trim()) {
+            alert('กรุณาเลือกข้อมูลรถ: หมายเลขทะเบียนรถ หรือ หมายเลขตัวถัง');
+            event.preventDefault();
+        }
+      } 
+  } else {
+    alert('กรุณากรอกข้อมูลก่อนทำการตรวจสอบเลขบัตร');
+    event.preventDefault();
+  }
+
+  });
+
+
+</script>  
+
+<script>
+/* ฟังก์ชันการเปลี่ยนตัวเลือก */
+
+var SearchNum = document.getElementById("searchnum");
+var SearchName = document.getElementById("searchname");
+var NumberWrt = document.getElementById("number_wrt");
+var CarNumber = document.getElementById("car_data");
+var FirstName = document.getElementById("cust_firstname");
+var LastName = document.getElementById("cust_lastname");
+var Liceseplateblack = document.getElementById("cust_liceseplateblack");
+var Vin = document.getElementById("cust_vin");
+var NameLicese = document.getElementById("nameliceseplateblack");
+var NameVin = document.getElementById("namevin");
+
+NameLicese.style.display = "none";
+NameVin.style.display = "none";
+
+SearchNum.addEventListener("change", function() {
+    if (SearchNum.checked) {
+        NumberWrt.style.display = "block";
+
+        CarNumber.style.display = "none";
+        CarNumber.value = "";
+
+        FirstName.style.display = "none";
+        FirstName.value = "";
+        LastName.style.display = "none";
+        LastName.value = "";
+
+        Liceseplateblack.style.display = "none";
+        Vin.style.display = "none";
+
+        Liceseplateblack.checked = false;
+        Vin.checked = false;
+
+        NameLicese.style.display = "none";
+        NameVin.style.display = "none";
+    }
+});
+
+SearchName.addEventListener("change", function() {
+    if (SearchName.checked) {
+        NumberWrt.style.display = "none";
+        NumberWrt.value = "";
+
+        CarNumber.style.display = "block";
+
+        FirstName.style.display = "block";
+        LastName.style.display = "block";
+
+        Liceseplateblack.style.display = "inline-block"; 
+        Vin.style.display = "inline-block"; 
+
+        NameLicese.style.display = "block";
+        NameVin.style.display = "block";
+    }
+});
+
+</script>
+
+</body>
+
+</html>

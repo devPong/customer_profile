@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class PersonConfig(AppConfig):
+class SysApiConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'person'
+    name = 'sys_api'

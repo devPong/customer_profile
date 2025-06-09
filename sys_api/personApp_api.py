@@ -4,8 +4,9 @@ from datetime import datetime
 from .db_engine import get_sqlalchemy_engine
 import pandas as pd
 
-class contactApi:
-    def contact_mangement(request):
+
+class personApi:
+    def person_mangement(request):
         if request.method == 'POST':
             if request.POST.get.action == 'create':
                 pass
@@ -22,6 +23,5 @@ class contactApi:
                 pass
         else:
             pass
-    def contact_edit():
+    def person_edit():
         pass
-

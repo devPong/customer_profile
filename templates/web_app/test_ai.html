@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Personal Information Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Flatpickr Datepicker CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      padding: 2rem;
+    }
+    .section-title {
+      font-weight: bold;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="mb-4">Personal Information Form</h1>
+
+    <!-- Personal Info -->
+    <div class="section-title">🧍 Personal Info</div>
+    <div class="row g-3">
+      <div class="col-md-4">
+        <label for="firstName" class="form-label">First Name</label>
+        <input type="text" class="form-control" id="firstName">
+      </div>
+      <div class="col-md-4">
+        <label for="lastName" class="form-label">Last Name</label>
+        <input type="text" class="form-control" id="lastName">
+      </div>
+      <div class="col-md-4">
+        <label for="nickName" class="form-label">Nick Name</label>
+        <input type="text" class="form-control" id="nickName">
+      </div>
+      <div class="col-md-4">
+        <label for="gender" class="form-label">Gender</label>
+        <select class="form-select" id="gender">
+          <option value="" selected disabled>Choose...</option>
+          <option>Male</option>
+          <option>Female</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label for="birthday" class="form-label">Birthday</label>
+        <input type="text" class="form-control" id="birthday" placeholder="YYYY-MM-DD">
+      </div>
+    </div>
+
+    <!-- Address Info -->
+    <div class="section-title">🏠 Address Info</div>
+    <div class="row g-3">
+      <div class="col-12">
+        <label for="address" class="form-label">Address</label>
+        <textarea class="form-control" id="address" rows="2"></textarea>
+      </div>
+      <div class="col-md-4">
+        <label for="province" class="form-label">Province</label>
+        <input type="text" class="form-control" id="province">
+      </div>
+      <div class="col-md-4">
+        <label for="district" class="form-label">District</label>
+        <input type="text" class="form-control" id="district">
+      </div>
+      <div class="col-md-4">
+        <label for="subdistrict" class="form-label">Subdistrict</label>
+        <input type="text" class="form-control" id="subdistrict">
+      </div>
+      <div class="col-md-4">
+        <label for="postcode" class="form-label">Post Code</label>
+        <input type="text" class="form-control" id="postcode">
+      </div>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="section-title">📱 Contact Info</div>
+    <div class="row g-3">
+      <div class="col-md-4"><label class="form-label">Mobile</label><input type="text" class="form-control"></div>
+      <div class="col-md-4"><label class="form-label">Email</label><input type="email" class="form-control"></div>
+      <div class="col-md-4"><label class="form-label">Facebook</label><input type="text" class="form-control"></div>
+      <div class="col-md-4"><label class="form-label">Line</label><input type="text" class="form-control"></div>
+      <div class="col-md-4"><label class="form-label">Instagram</label><input type="text" class="form-control"></div>
+      <div class="col-md-4"><label class="form-label">Tiktok</label><input type="text" class="form-control"></div>
+    </div>
+
+    <!-- Additional Info -->
+    <div class="section-title">🧠 Lifestyle</div>
+    <div class="row g-3">
+      <div class="col-md-4"><label class="form-label">Hobby</label><input type="text" class="form-control"></div>
+      <div class="col-md-4"><label class="form-label">Food Favorite</label><input type="text" class="form-control"></div>
+      <div class="col-md-4"><label class="form-label">Food Allergies</label><input type="text" class="form-control"></div>
+    </div>
+
+    <!-- Substance Use -->
+    <div class="section-title">🚬 Substance Use</div>
+    <div class="row g-3">
+      <div class="col-md-4">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="alcoholCheck">
+          <label class="form-check-label" for="alcoholCheck">Alcohol</label>
+        </div>
+        <input type="text" class="form-control mt-1" id="alcoholBrand" placeholder="Specify Alcohol Brand" disabled>
+      </div>
+      <div class="col-md-4">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="wineCheck">
+          <label class="form-check-label" for="wineCheck">Wine</label>
+        </div>
+        <input type="text" class="form-control mt-1" id="wineBrand" placeholder="Specify Wine Brand" disabled>
+      </div>
+      <div class="col-md-4">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="cigaretteCheck">
+          <label class="form-check-label" for="cigaretteCheck">Cigarettes</label>
+        </div>
+        <input type="text" class="form-control mt-1" id="cigaretteBrand" placeholder="Specify Cigarette Brand" disabled>
+      </div>
+    </div>
+
+    <div class="mt-4">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS + dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Flatpickr Datepicker -->
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script>
+    // Activate datepicker
+    flatpickr("#birthday", {
+      dateFormat: "Y-m-d"
+    });
+
+    // Enable/Disable brand input fields
+    document.getElementById('alcoholCheck').addEventListener('change', function () {
+      document.getElementById('alcoholBrand').disabled = !this.checked;
+    });
+    document.getElementById('wineCheck').addEventListener('change', function () {
+      document.getElementById('wineBrand').disabled = !this.checked;
+    });
+    document.getElementById('cigaretteCheck').addEventListener('change', function () {
+      document.getElementById('cigaretteBrand').disabled = !this.checked;
+    });
+  </script>
+</body>
+</html>
